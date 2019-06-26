@@ -1,0 +1,63 @@
+.App {
+    text-align: center;
+  }
+  .garamond-h3 { 
+    font-family: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif; 
+    font-size: 30px; 
+    font-style: normal; 
+    font-variant: normal; 
+    font-weight: 700; 
+    line-height: 15.4px; 
+  } 
+  .great-vibes {
+    font: 400 130px/0.8 'Great Vibes', Helvetica, sans-serif;
+    color: #fff;
+    text-shadow: 4px 4px 3px rgba(0,0,0,0.1); 
+  }
+  
+  .logo {
+    /* animation: App-logo-spin infinite 20s linear; */
+    height: 40vmin;
+    pointer-events: none;
+  }
+  
+  .header {
+    background-color: #65173A;
+    /* background-image: linear-gradient(#65173A, gray); */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(40px + 2vmin);
+    font-family: 'Times New Roman', Times, serif;
+    color: black;
+    font-weight: bold;
+  }
+  
+  .App-link {
+    color: navy;
+    font-size: calc(10px + 2vmin);
+  }
+  
+  .body {
+    background-color: #65173A;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    font-family: 'Times New Roman', Times, serif;
+    color: black;
+    font-weight: bold;
+    /* margin-top: -3%; */
+  }
+  
+  @keyframes App-logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
