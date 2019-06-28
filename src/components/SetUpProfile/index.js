@@ -1,3 +1,5 @@
+// currently this is literally the exact same as the SignUp page 
+
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 
@@ -5,11 +7,9 @@ import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
 import * as ROLES from '../../constants/roles';
 
-import '../Landing/App.css';
-
 const SignUpPage = () => (
-  <div className = "body">
-    <h1>Sign Up</h1>
+  <div>
+    <h1>SignUp</h1>
     <SignUpForm />
   </div>
 );
@@ -21,6 +21,9 @@ const INITIAL_STATE = {
   passwordTwo: '',
   isAdmin: false,
   error: null,
+  age: 18, 
+  gender: 'male',
+  images: null, 
 };
 
 const ERROR_CODE_ACCOUNT_EXISTS = 'auth/email-already-in-use';
@@ -104,15 +107,13 @@ class SignUpFormBase extends Component {
       username === '';
 
     return (
-      <div className ="input">
       <form onSubmit={this.onSubmit}>
-        <input 
-          type = "text"
+        <input
           name="username"
           value={username}
           onChange={this.onChange}
           type="text"
-          placeholder="Name (as displayed)"
+          placeholder="Full Name"
         />
         <input
           name="email"
@@ -135,19 +136,27 @@ class SignUpFormBase extends Component {
           type="password"
           placeholder="Confirm Password"
         />
+        <label>
+          Admin:
+          <input
+            name="isAdmin"
+            type="checkbox"
+            checked={isAdmin}
+            onChange={this.onChangeCheckbox}
+          />
+        </label>
         <button disabled={isInvalid} type="submit">
           Sign Up
         </button>
 
         {error && <p>{error.message}</p>}
       </form>
-      </div>
     );
   }
 }
 
 const SignUpLink = () => (
-  <p className = "body">
+  <p>
     Don't have an account? <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
   </p>
 );

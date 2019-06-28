@@ -1,3 +1,4 @@
+* {background-color: #65173A}
 .App {
     text-align: center;
   }
@@ -42,6 +43,7 @@
   
   .body {
     background-color: #65173A;
+    color: black;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -49,8 +51,18 @@
     font-size: calc(10px + 2vmin);
     font-family: 'Times New Roman', Times, serif;
     color: black;
-    font-weight: bold;
+    font-weight: bold; 
     /* margin-top: -3%; */
+  }
+
+  .input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: none;
+    background-color: #3CBC8D;
+    color: white;
   }
   
   @keyframes App-logo-spin {
