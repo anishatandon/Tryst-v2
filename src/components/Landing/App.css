@@ -10,6 +10,7 @@
     font-weight: 700; 
     line-height: 15.4px; 
   } 
+  
   .great-vibes {
     font: 400 130px/0.8 'Great Vibes', Helvetica, sans-serif;
     color: #fff;
@@ -55,16 +56,22 @@
     /* margin-top: -3%; */
   }
 
-  .input[type=text] {
+  .input {
+    display: block;
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
     box-sizing: border-box;
     border: none;
-    background-color: #3CBC8D;
+    background-color: #65173A;
     color: white;
   }
   
+  .button {
+    width: 100%;
+    background-color: #65173A;
+    color: white; 
+  }
   @keyframes App-logo-spin {
     from {
       transform: rotate(0deg);

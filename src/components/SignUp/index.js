@@ -1,15 +1,19 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
+import { compose } from 'recompose';
 
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
 import * as ROLES from '../../constants/roles';
 
 import '../Landing/App.css';
+import logo from '../../logo.svg';
+
 
 const SignUpPage = () => (
   <div className = "body">
-    <h1>Sign Up</h1>
+    <img src={logo} className="logo" alt="logo" />
+    <h1 className="great-vibes">Sign Up</h1>
     <SignUpForm />
   </div>
 );
@@ -52,14 +56,11 @@ class SignUpFormBase extends Component {
       .doCreateUserWithEmailAndPassword(email, passwordOne)
       .then(authUser => {
         // Create a user in your Firebase realtime database
-        return this.props.firebase.user(authUser.user.uid).set(
-          {
-            username,
-            email,
-            roles,
-          },
-          { merge: true },
-        );
+        return this.props.firebase.user(authUser.user.uid).set({
+          username,
+          email,
+          roles,
+        });
       })
       .then(() => {
         return this.props.firebase.doSendEmailVerification();
@@ -104,44 +105,52 @@ class SignUpFormBase extends Component {
       username === '';
 
     return (
-      <div className ="input">
-      <form onSubmit={this.onSubmit}>
-        <input 
-          type = "text"
-          name="username"
-          value={username}
-          onChange={this.onChange}
-          type="text"
-          placeholder="Name (as displayed)"
-        />
-        <input
-          name="email"
-          value={email}
-          onChange={this.onChange}
-          type="text"
-          placeholder="Email Address"
-        />
-        <input
-          name="passwordOne"
-          value={passwordOne}
-          onChange={this.onChange}
-          type="password"
-          placeholder="Password"
-        />
-        <input
-          name="passwordTwo"
-          value={passwordTwo}
-          onChange={this.onChange}
-          type="password"
-          placeholder="Confirm Password"
-        />
-        <button disabled={isInvalid} type="submit">
-          Sign Up
-        </button>
+      <div>
+          <form onSubmit={this.onSubmit}>
+            <input className="input"
+              type = "text"
+              name="username"
+              value={username}
+              onChange={this.onChange}
+              placeholder="Name (as displayed)"
+            /> 
+            <input className="input"
+              name="email"
+              value={email}
+              onChange={this.onChange}
+              type="text"
+              placeholder="Email Address"
+            />
+            <input className="input"
+              name="passwordOne"
+              value={passwordOne}
+              onChange={this.onChange}
+              type="password"
+              placeholder="Password"
+            />
+            <input className="input"
+              name="passwordTwo"
+              value={passwordTwo}
+              onChange={this.onChange}
+              type="password"
+              placeholder="Confirm Password"
+            />
+            <label>
+              Admin:
+              <input
+                name="isAdmin"
+                type="checkbox"
+                checked={isAdmin}
+                onChange={this.onChangeCheckbox}
+              />
+              </label>
+            <button disabled={isInvalid} type="submit" className="button">
+              Sign Up
+            </button>
 
-        {error && <p>{error.message}</p>}
-      </form>
-      </div>
+            {error && <p>{error.message}</p>}
+          </form>
+        </div>
     );
   }
 }
@@ -152,7 +161,10 @@ const SignUpLink = () => (
   </p>
 );
 
-const SignUpForm = withRouter(withFirebase(SignUpFormBase));
+const SignUpForm = compose(
+    withRouter,
+    withFirebase,
+  )(SignUpFormBase);
 
 export default SignUpPage;
 
