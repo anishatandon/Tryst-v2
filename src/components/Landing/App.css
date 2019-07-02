@@ -2,6 +2,11 @@
 .App {
     text-align: center;
   }
+
+  .h1{
+    color:white;
+  }
+
   .garamond-h3 { 
     font-family: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif; 
     font-size: 30px; 
@@ -38,7 +43,7 @@
   }
   
   .App-link {
-    color: navy;
+    color: black;
     font-size: calc(10px + 2vmin);
   }
   
@@ -51,7 +56,6 @@
     justify-content: center;
     font-size: calc(10px + 2vmin);
     font-family: 'Times New Roman', Times, serif;
-    color: black;
     font-weight: bold; 
     /* margin-top: -3%; */
   }
@@ -69,6 +73,12 @@
   
   .button {
     width: 100%;
+    background-color: #65173A;
+    color: white; 
+  }
+
+  .half-button{
+    width: 50%;
     background-color: #65173A;
     color: white; 
   }

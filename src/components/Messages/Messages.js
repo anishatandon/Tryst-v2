@@ -95,7 +95,7 @@ class Messages extends Component {
         {authUser => (
           <div>
             {!loading && messages && (
-              <button type="button" onClick={this.onNextPage}>
+              <button type="button" onClick={this.onNextPage} className="button">
                 More
               </button>
             )}
@@ -118,12 +118,13 @@ class Messages extends Component {
                 this.onCreateMessage(event, authUser)
               }
             >
-              <input
+              <input className="input"
                 type="text"
                 value={text}
                 onChange={this.onChangeText}
+                placeholder="write a message"
               />
-              <button type="submit">Send</button>
+              <button type="submit" className="button">Send</button>
             </form>
           </div>
         )}

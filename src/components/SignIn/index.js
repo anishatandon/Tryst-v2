@@ -7,9 +7,13 @@ import { PasswordForgetLink } from '../PasswordForget';
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
 
+import '../Landing/App.css';
+import logo from '../../logo.svg';
+
 const SignInPage = () => (
-  <div>
-    <h1>SignIn</h1>
+  <div className="body">
+    <img src={logo} className="logo" alt="logo" />
+    <h1 className="great-vibes">Sign In</h1>
     <SignInForm />
     <SignInGoogle />
     <SignInFacebook />
@@ -69,21 +73,21 @@ class SignInFormBase extends Component {
 
     return (
       <form onSubmit={this.onSubmit}>
-        <input
+        <input className="input"
           name="email"
           value={email}
           onChange={this.onChange}
           type="text"
           placeholder="Email Address"
         />
-        <input
+        <input className="input"
           name="password"
           value={password}
           onChange={this.onChange}
           type="password"
           placeholder="Password"
         />
-        <button disabled={isInvalid} type="submit">
+        <button disabled={isInvalid} type="submit" className="button">
           Sign In
         </button>
 
@@ -131,7 +135,7 @@ class SignInGoogleBase extends Component {
 
     return (
       <form onSubmit={this.onSubmit}>
-        <button type="submit">Sign In with Google</button>
+        <button type="submit" className="button" >Sign In with Google</button>
 
         {error && <p>{error.message}</p>}
       </form>
@@ -177,7 +181,7 @@ class SignInFacebookBase extends Component {
 
     return (
       <form onSubmit={this.onSubmit}>
-        <button type="submit">Sign In with Facebook</button>
+        <button type="submit" className="button">Sign In with Facebook</button>
 
         {error && <p>{error.message}</p>}
       </form>
@@ -223,7 +227,7 @@ class SignInTwitterBase extends Component {
 
     return (
       <form onSubmit={this.onSubmit}>
-        <button type="submit">Sign In with Twitter</button>
+        <button type="submit" className="button">Sign In with Twitter</button>
 
         {error && <p>{error.message}</p>}
       </form>
