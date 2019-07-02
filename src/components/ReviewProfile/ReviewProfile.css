@@ -1,0 +1,38 @@
+.body {
+  background-color: #65173A;
+  color: black;
+}
+
+.header {
+  font-family: "Arial Black", "Arial Bold", Gadget, sans-serif; 
+  font-size: 24px;
+  font-style: normal; 
+  font-variant: normal; 
+  font-weight: bold; 
+  line-height: 26px;
+}
+
+.logo {
+  width: 100px;
+  height:100px;
+  vertical-align: top;
+}
+
+.button {
+  background-color: black; 
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  margin: 8px 10px;
+  cursor: pointer;
+  border-radius: 75%;
+}
+
+.photo {
+  width: 150px;
+  height: 200px;
+}

@@ -1,0 +1,50 @@
+.body {
+  background-color: #65173A;
+  color: black;
+}
+
+.header {
+  font-family: "Arial Black", "Arial Bold", Gadget, sans-serif; 
+  font-size: 15px;
+  font-style: normal; 
+  font-variant: normal; 
+  font-weight: bold; 
+  line-height: 28px;
+}
+
+.logo {
+  width: 200px;
+  height:100px;
+  vertical-align: top;
+}
+
+.button {
+  background-color: black; 
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  margin: 8px 10px;
+  cursor: pointer;
+  border-radius: 75%;
+  width:95px;
+  height: 85px;
+}
+
+.vertical-container {
+  height: 50px;
+  padding: -10px;
+  display: -webkit-flex;
+  display:         flex;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  vertical-align: none;
+}
+h1.vertical-container {
+  font-size: 275%;
+}

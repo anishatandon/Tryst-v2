@@ -1,0 +1,43 @@
+.body {
+  background-color: #65173A;
+  color: black;
+}
+
+.header {
+  font-family: "Arial Black", "Arial Bold", Gadget, sans-serif; 
+  font-size: 24px;
+  font-style: normal; 
+  font-variant: normal; 
+  font-weight: bold; 
+  line-height: 26px;
+}
+
+.great-vibes {
+  font-family: 'Great Vibes';
+  font-size: 44px;
+  font-weight: bold;
+  line-height: 35px;
+  color: black;
+}
+
+.button {
+  background-color: black; 
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  margin: 8px 10px;
+  cursor: pointer;
+  border-radius: 75%;
+  width: 100px;
+  height: 125px
+}
+
+.logo {
+  width: 100px;
+  height:100px;
+  vertical-align: top;
+}
