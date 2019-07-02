@@ -1,19 +1,15 @@
+// currently this is literally the exact same as the SignUp page 
+
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import { compose } from 'recompose';
 
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
 import * as ROLES from '../../constants/roles';
 
-import '../Landing/App.css';
-import logo from '../../logo.svg';
-
-
 const SignUpPage = () => (
-  <div className = "body">
-    <img src={logo} className="logo" alt="logo" />
-    <h1 className="great-vibes">Sign Up</h1>
+  <div>
+    <h1>SignUp</h1>
     <SignUpForm />
   </div>
 );
@@ -25,6 +21,9 @@ const INITIAL_STATE = {
   passwordTwo: '',
   isAdmin: false,
   error: null,
+  age: 18, 
+  gender: 'male',
+  images: null, 
 };
 
 const ERROR_CODE_ACCOUNT_EXISTS = 'auth/email-already-in-use';
@@ -56,11 +55,14 @@ class SignUpFormBase extends Component {
       .doCreateUserWithEmailAndPassword(email, passwordOne)
       .then(authUser => {
         // Create a user in your Firebase realtime database
-        return this.props.firebase.user(authUser.user.uid).set({
-          username,
-          email,
-          roles,
-        });
+        return this.props.firebase.user(authUser.user.uid).set(
+          {
+            username,
+            email,
+            roles,
+          },
+          { merge: true },
+        );
       })
       .then(() => {
         return this.props.firebase.doSendEmailVerification();
@@ -105,66 +107,61 @@ class SignUpFormBase extends Component {
       username === '';
 
     return (
-      <div>
-          <form onSubmit={this.onSubmit}>
-            <input className="input"
-              type = "text"
-              name="username"
-              value={username}
-              onChange={this.onChange}
-              placeholder="Name (as displayed)"
-            /> 
-            <input className="input"
-              name="email"
-              value={email}
-              onChange={this.onChange}
-              type="text"
-              placeholder="Email Address"
-            />
-            <input className="input"
-              name="passwordOne"
-              value={passwordOne}
-              onChange={this.onChange}
-              type="password"
-              placeholder="Password"
-            />
-            <input className="input"
-              name="passwordTwo"
-              value={passwordTwo}
-              onChange={this.onChange}
-              type="password"
-              placeholder="Confirm Password"
-            />
-            {/* <label>
-              Admin:
-              <input
-                name="isAdmin"
-                type="checkbox"
-                checked={isAdmin}
-                onChange={this.onChangeCheckbox}
-              />
-              </label> */}
-            <button disabled={isInvalid} type="submit" className="button">
-              Sign Up
-            </button>
+      <form onSubmit={this.onSubmit}>
+        <input
+          name="username"
+          value={username}
+          onChange={this.onChange}
+          type="text"
+          placeholder="Full Name"
+        />
+        <input
+          name="email"
+          value={email}
+          onChange={this.onChange}
+          type="text"
+          placeholder="Email Address"
+        />
+        <input
+          name="passwordOne"
+          value={passwordOne}
+          onChange={this.onChange}
+          type="password"
+          placeholder="Password"
+        />
+        <input
+          name="passwordTwo"
+          value={passwordTwo}
+          onChange={this.onChange}
+          type="password"
+          placeholder="Confirm Password"
+        />
+        <label>
+          Admin:
+          <input
+            name="isAdmin"
+            type="checkbox"
+            checked={isAdmin}
+            onChange={this.onChangeCheckbox}
+          />
+        </label>
+        <button disabled={isInvalid} type="submit">
+          Sign Up
+        </button>
 
-            {error && <p>{error.message}</p>}
-          </form>
-        </div>
+        {error && <p>{error.message}</p>}
+      </form>
     );
   }
 }
 
 const SignUpLink = () => (
-  <p className = "body">
-    Don't have an account? <Link to={ROUTES.SIGN_UP} className="App-link"><br></br>Sign Up</Link>
+  <p>
+    Don't have an account? <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
   </p>
 );
 
-const SignUpForm = compose(
-    withRouter,
-    withFirebase,
-  )(SignUpFormBase);
+const SignUpForm = withRouter(withFirebase(SignUpFormBase));
 
 export default SignUpPage;
 

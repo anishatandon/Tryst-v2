@@ -20,18 +20,18 @@ class UserItem extends Component {
 
     this.setState({ loading: true });
 
-    this.unsubscribe = this.props.firebase
+    this.props.firebase
       .user(this.props.match.params.id)
-      .onSnapshot(snapshot => {
+      .on('value', snapshot => {
         this.setState({
-          user: snapshot.data(),
+          user: snapshot.val(),
           loading: false,
         });
       });
   }
 
   componentWillUnmount() {
-    this.unsubscribe && this.unsubscribe();
+    this.props.firebase.user(this.props.match.params.id).off();
   }
 
   onSendPasswordResetEmail = () => {
