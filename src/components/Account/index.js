@@ -32,7 +32,7 @@ const SIGN_IN_METHODS = [
 const AccountPage = () => (
   <AuthUserContext.Consumer>
     {authUser => (
-      <div>
+      <div className="body">
         <h1>Account: {authUser.email}</h1>
         <PasswordForgetForm />
         <PasswordChangeForm />
@@ -141,7 +141,7 @@ const SocialLoginToggle = ({
   onUnlink,
 }) =>
   isEnabled ? (
-    <button
+    <button className="button"
       type="button"
       onClick={() => onUnlink(signInMethod.id)}
       disabled={onlyOneLeft}
@@ -149,7 +149,7 @@ const SocialLoginToggle = ({
       Deactivate {signInMethod.id}
     </button>
   ) : (
-    <button
+    <button className="button"
       type="button"
       onClick={() => onLink(signInMethod.provider)}
     >
@@ -189,7 +189,7 @@ class DefaultLoginToggle extends Component {
       passwordOne !== passwordTwo || passwordOne === '';
 
     return isEnabled ? (
-      <button
+      <button className="button"
         type="button"
         onClick={() => onUnlink(signInMethod.id)}
         disabled={onlyOneLeft}
@@ -198,14 +198,14 @@ class DefaultLoginToggle extends Component {
       </button>
     ) : (
       <form onSubmit={this.onSubmit}>
-        <input
+        <input className="input"
           name="passwordOne"
           value={passwordOne}
           onChange={this.onChange}
           type="password"
           placeholder="New Password"
         />
-        <input
+        <input className="input"
           name="passwordTwo"
           value={passwordTwo}
           onChange={this.onChange}
@@ -213,7 +213,7 @@ class DefaultLoginToggle extends Component {
           placeholder="Confirm New Password"
         />
 
-        <button disabled={isInvalid} type="submit">
+        <button disabled={isInvalid} type="submit" className="button">
           Link {signInMethod.id}
         </button>
       </form>

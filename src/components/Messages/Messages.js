@@ -23,19 +23,21 @@ class Messages extends Component {
   onListenForMessages = () => {
     this.setState({ loading: true });
 
-    this.unsubscribe = this.props.firebase
+    this.props.firebase
       .messages()
-      .orderBy('createdAt', 'desc')
-      .limit(this.state.limit)
-      .onSnapshot(snapshot => {
-        if (snapshot.size) {
-          let messages = [];
-          snapshot.forEach(doc =>
-            messages.push({ ...doc.data(), uid: doc.id }),
-          );
+      .orderByChild('createdAt')
+      .limitToLast(this.state.limit)
+      .on('value', snapshot => {
+        const messageObject = snapshot.val();
+
+        if (messageObject) {
+          const messageList = Object.keys(messageObject).map(key => ({
+            ...messageObject[key],
+            uid: key,
+          }));
 
           this.setState({
-            messages: messages.reverse(),
+            messages: messageList,
             loading: false,
           });
         } else {
@@ -45,7 +47,7 @@ class Messages extends Component {
   };
 
   componentWillUnmount() {
-    this.unsubscribe();
+    this.props.firebase.messages().off();
   }
 
   onChangeText = event => {
@@ -53,10 +55,10 @@ class Messages extends Component {
   };
 
   onCreateMessage = (event, authUser) => {
-    this.props.firebase.messages().add({
+    this.props.firebase.messages().push({
       text: this.state.text,
       userId: authUser.uid,
-      createdAt: this.props.firebase.fieldValue.serverTimestamp(),
+      createdAt: this.props.firebase.serverValue.TIMESTAMP,
     });
 
     this.setState({ text: '' });
@@ -67,15 +69,15 @@ class Messages extends Component {
   onEditMessage = (message, text) => {
     const { uid, ...messageSnapshot } = message;
 
-    this.props.firebase.message(message.uid).update({
+    this.props.firebase.message(message.uid).set({
       ...messageSnapshot,
       text,
-      editedAt: this.props.firebase.fieldValue.serverTimestamp(),
+      editedAt: this.props.firebase.serverValue.TIMESTAMP,
     });
   };
 
   onRemoveMessage = uid => {
-    this.props.firebase.message(uid).delete();
+    this.props.firebase.message(uid).remove();
   };
 
   onNextPage = () => {
@@ -93,7 +95,7 @@ class Messages extends Component {
         {authUser => (
           <div>
             {!loading && messages && (
-              <button type="button" onClick={this.onNextPage}>
+              <button type="button" onClick={this.onNextPage} className="button">
                 More
               </button>
             )}
@@ -116,12 +118,13 @@ class Messages extends Component {
                 this.onCreateMessage(event, authUser)
               }
             >
-              <input
+              <input className="input"
                 type="text"
                 value={text}
                 onChange={this.onChangeText}
+                placeholder="write a message"
               />
-              <button type="submit">Send</button>
+              <button type="submit" className="button">Send</button>
             </form>
           </div>
         )}

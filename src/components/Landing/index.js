@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from './logo.svg';
+import logo from '../../logo.svg';
 import { Link } from 'react-router-dom';
 import './App.css';
 
@@ -14,7 +14,7 @@ const Landing = () => (
           <body className="garamond-h3">
             Dating without the hassle <br></br><br></br>
           <Link to='/SignUp' className="App-link">Sign Up</Link><br></br><br></br>
-          <Link to='/Login' className="App-link">Log in</Link>
+          <Link to='/Signin' className="App-link">Log in</Link>
           </body>
       </header></div>
 );

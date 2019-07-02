@@ -50,16 +50,16 @@ class MessageItem extends Component {
           <span>
             {editMode ? (
               <span>
-                <button onClick={this.onSaveEditText}>Save</button>
-                <button onClick={this.onToggleEditMode}>Reset</button>
+                <button onClick={this.onSaveEditText} className="half-button">Save</button>
+                <button onClick={this.onToggleEditMode} className="half-button"> Reset</button>
               </span>
             ) : (
-              <button onClick={this.onToggleEditMode}>Edit</button>
+              <button onClick={this.onToggleEditMode} className="half-button">Edit</button>
             )}
 
             {!editMode && (
               <button
-                type="button"
+                type="button" className="half-button"
                 onClick={() => onRemoveMessage(message.uid)}
               >
                 Delete

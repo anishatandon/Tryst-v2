@@ -17,24 +17,23 @@ class UserList extends Component {
   componentDidMount() {
     this.setState({ loading: true });
 
-    this.unsubscribe = this.props.firebase
-      .users()
-      .onSnapshot(snapshot => {
-        let users = [];
+    this.props.firebase.users().on('value', snapshot => {
+      const usersObject = snapshot.val();
 
-        snapshot.forEach(doc =>
-          users.push({ ...doc.data(), uid: doc.id }),
-        );
+      const usersList = Object.keys(usersObject).map(key => ({
+        ...usersObject[key],
+        uid: key,
+      }));
 
-        this.setState({
-          users,
-          loading: false,
-        });
+      this.setState({
+        users: usersList,
+        loading: false,
       });
+    });
   }
 
   componentWillUnmount() {
-    this.unsubscribe();
+    this.props.firebase.users().off();
   }
 
   render() {
