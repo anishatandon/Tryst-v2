@@ -29,6 +29,9 @@ const NavigationAuth = ({ authUser }) => (
     <li>
       <Link to={ROUTES.ACCOUNT}>Account</Link>
     </li>
+    <li>
+      <Link to={ROUTES.SET_UP_PROFILE}> Set up profile</Link>  
+    </li>
     {!!authUser.roles[ROLES.ADMIN] && (
       <li>
         <Link to={ROUTES.ADMIN}>Admin</Link>
