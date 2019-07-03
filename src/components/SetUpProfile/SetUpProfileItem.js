@@ -56,15 +56,6 @@ class SetUpProfileItem extends Component {
             ) : (
               <button onClick={this.onToggleEditMode} className="half-button">Edit</button>
             )}
-
-            {!editMode && (
-              <button
-                type="button" className="half-button"
-                onClick={() => onRemoveMessage(messages.uid)}
-              >
-                Delete
-              </button>
-            )}
           </span>
         )}
       </li>

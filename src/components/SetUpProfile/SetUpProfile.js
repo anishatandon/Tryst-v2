@@ -4,6 +4,9 @@ import { AuthUserContext } from '../Session';
 import { withFirebase } from '../Firebase';
 import SetUpProfileList from './SetUpProfileList';
 
+import '../Landing/App.css';
+import Slider from 'react-rangeslider';
+
 class SetUpProfile extends Component {
   constructor(props) {
     super(props);
@@ -12,6 +15,7 @@ class SetUpProfile extends Component {
       dob: '0000',
       gender: 'male',
       genderpref: 'female',
+      agepref: 18,
       pictures: null,
       text: '',
       loading: false,
@@ -54,6 +58,10 @@ class SetUpProfile extends Component {
     this.props.firebase.messages().off();
   }
 
+  onChange = event => {
+    this.setState({ [event.target.name]: event.target.value });
+  };
+
   onChangeText = event => {
     this.setState({ text: event.target.value });
   };
@@ -92,7 +100,7 @@ class SetUpProfile extends Component {
   };
 
   render() {
-    const { text, messages, loading } = this.state;
+    const { dob, gender, genderpref, agepref, pictures, text, messages, loading } = this.state;
 
     return (
       <AuthUserContext.Consumer>
@@ -122,12 +130,51 @@ class SetUpProfile extends Component {
                 this.onCreateMessage(event, authUser)
               }
             >
-              <input className="input"
-                type="text"
-                value={text}
-                onChange={this.onChangeText}
-                placeholder="write a message"
-              />
+            <h1> when were u born </h1> 
+            <input className="input"
+            type = "date"
+            name="date of birth"
+            value={dob}
+            onChange={this.onChange}
+            placeholder="Birth?"
+            /> 
+            <h1>gender</h1>
+            <input type="radio" name="gender" value= {gender}/> Male<br></br>
+            <input type="radio" name="gender" value={gender}/> Female<br></br>
+            
+            <h1>gender preference</h1>
+            <input type="radio" name="gender preference" value= {genderpref}/> Male<br></br>
+            <input type="radio" name="gender preference" value={genderpref}/> Female<br></br>
+            <input type="radio" name="gender preference" value={genderpref}/> Both<br></br>
+        {/* age range, location, pictures */}
+
+            <h1>Age range</h1>
+            <Slider
+            value={agepref}
+             orientation="horizontal"
+             onChange={this.onChange}
+               />            
+            <p>Custom range slider:</p>
+            <input type="range" min="1" max="100" value="50" class="slider" id="myRange"/>
+            
+
+            <input className="input"
+              type="range"
+              name=""
+              min="18" 
+              max="150" 
+              value="50"
+              value={agepref}
+              onChange={this.onChange}
+              placeholder="age preference"
+            />
+            {/* <input className="input"
+              name="passwordTwo"
+              value={passwordTwo}
+              onChange={this.onChange}
+              type="password"
+              placeholder="Confirm Password"
+            /> */}
               <button type="submit" className="button">Send</button>
             </form>
           </div>
