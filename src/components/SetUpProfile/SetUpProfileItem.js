@@ -6,14 +6,14 @@ class SetUpProfileItem extends Component {
 
     this.state = {
       editMode: false,
-      editText: this.props.biodata.text,
+      editText: this.props.messages.text,
     };
   }
 
   onToggleEditMode = () => {
     this.setState(state => ({
       editMode: !state.editMode,
-      editText: this.props.biodata.text,
+      editText: this.props.messages.text,
     }));
   };
 
@@ -22,13 +22,13 @@ class SetUpProfileItem extends Component {
   };
 
   onSaveEditText = () => {
-    this.props.onEditMessage(this.props.biodata, this.state.editText);
+    this.props.onEditMessage(this.props.messages, this.state.editText);
 
     this.setState({ editMode: false });
   };
 
   render() {
-    const { authUser, biodata, onRemoveMessage } = this.props;
+    const { authUser, messages, onRemoveMessage } = this.props;
     const { editMode, editText } = this.state;
 
     return (
@@ -41,12 +41,12 @@ class SetUpProfileItem extends Component {
           />
         ) : (
           <span>
-            <strong>{biodata.userId}</strong> {biodata.text}
-            {biodata.editedAt && <span>(Edited)</span>}
+            <strong>{messages.userId}</strong> {messages.text}
+            {messages.editedAt && <span>(Edited)</span>}
           </span>
         )}
 
-        {authUser.uid === biodata.userId && (
+        {authUser.uid === messages.userId && (
           <span>
             {editMode ? (
               <span>
@@ -60,7 +60,7 @@ class SetUpProfileItem extends Component {
             {!editMode && (
               <button
                 type="button" className="half-button"
-                onClick={() => onRemoveMessage(biodata.uid)}
+                onClick={() => onRemoveMessage(messages.uid)}
               >
                 Delete
               </button>

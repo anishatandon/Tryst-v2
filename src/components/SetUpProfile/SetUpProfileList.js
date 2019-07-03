@@ -4,14 +4,18 @@ import SetUpProfileItem from './SetUpProfileItem';
 
 const SetUpProfileList = ({
   authUser,
-  biodata,
+  messages,
+  onEditMessage,
+  onRemoveMessage,
 }) => (
   <ul>
-    {biodata.map(biodata => (
-      <MessageItem
+    {messages.map(messages => (
+      <SetUpProfileItem
         authUser={authUser}
-        key={biodata.uid}
-        biodata={biodata}
+        key={messages.uid}
+        messages={messages}
+        onEditMessage={onEditMessage}
+        onRemoveMessage={onRemoveMessage}
       />
     ))}
   </ul>

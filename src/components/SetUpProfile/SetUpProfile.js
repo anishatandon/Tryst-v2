@@ -1,160 +1,140 @@
-
 import React, { Component } from 'react';
-import { Link, withRouter } from 'react-router-dom';
-import { compose } from 'recompose';
 
+import { AuthUserContext } from '../Session';
 import { withFirebase } from '../Firebase';
-import * as ROUTES from '../../constants/routes';
-import * as ROLES from '../../constants/roles';
+import SetUpProfileList from './SetUpProfileList';
 
-const SetUpProfile = () => (
-  <div className="body">
-    <h1>Set up your profile: </h1>
-    <SetUpForm />
-  </div>
-);
-
-const INITIAL_STATE = {
-  dob: 18, 
-  gender: 'male',
-  genderpref: 'female',
-  image: null, 
-};
-
-
-const ERROR_CODE_ACCOUNT_EXISTS = 'auth/email-already-in-use';
-
-const ERROR_MSG_ACCOUNT_EXISTS = `
-  An account with this E-Mail address already exists.
-  Try to login with this account instead. If you think the
-  account is already used from one of the social logins, try
-  to sign in with one of them. Afterward, associate your accounts
-  on your personal account page.
-`;
-
-class SetUpFormBase extends Component {
+class SetUpProfile extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { ...INITIAL_STATE };
+    this.state = {
+      dob: '0000',
+      gender: 'male',
+      genderpref: 'female',
+      pictures: null,
+      text: '',
+      loading: false,
+      messages: [],
+      limit: 5,
+    };
   }
 
-  onSubmit = event => {
-    const { username, email, passwordOne, isAdmin } = this.state;
-    const roles = {};
+  componentDidMount() {
+    this.onListenForMessages();
+  }
 
-    if (isAdmin) {
-      roles[ROLES.ADMIN] = ROLES.ADMIN;
-    }
+  onListenForMessages = () => {
+    this.setState({ loading: true });
 
     this.props.firebase
-      .doCreateUserWithEmailAndPassword(email, passwordOne)
-      .then(authUser => {
-        // Create a user in your Firebase realtime database
-        return this.props.firebase.user(authUser.user.uid).set(
-          {
-            username,
-            email,
-            roles,
-          },
-          { merge: true },
-        );
-      })
-      .then(() => {
-        return this.props.firebase.doSendEmailVerification();
-      })
-      .then(() => {
-        this.setState({ ...INITIAL_STATE });
-        this.props.history.push(ROUTES.HOME);
-      })
-      .catch(error => {
-        if (error.code === ERROR_CODE_ACCOUNT_EXISTS) {
-          error.message = ERROR_MSG_ACCOUNT_EXISTS;
-        }
+      .messages()
+      .orderByChild('createdAt')
+      .limitToLast(this.state.limit)
+      .on('value', snapshot => {
+        const messageObject = snapshot.val();
 
-        this.setState({ error });
+        if (messageObject) {
+          const SetUpProfileList = Object.keys(messageObject).map(key => ({
+            ...messageObject[key],
+            uid: key,
+          }));
+
+          this.setState({
+            messages: SetUpProfileList,
+            loading: false,
+          });
+        } else {
+          this.setState({ messages: null, loading: false });
+        }
       });
+  };
+
+  componentWillUnmount() {
+    this.props.firebase.messages().off();
+  }
+
+  onChangeText = event => {
+    this.setState({ text: event.target.value });
+  };
+
+  onCreateMessage = (event, authUser) => {
+    this.props.firebase.messages().push({
+      text: this.state.text,
+      userId: authUser.uid,
+      createdAt: this.props.firebase.serverValue.TIMESTAMP,
+    });
+
+    this.setState({ text: '' });
 
     event.preventDefault();
   };
 
-  onChange = event => {
-    this.setState({ [event.target.name]: event.target.value });
+  onEditMessage = (message, text) => {
+    const { uid, ...messageSnapshot } = message;
+
+    this.props.firebase.message(message.uid).set({
+      ...messageSnapshot,
+      text,
+      editedAt: this.props.firebase.serverValue.TIMESTAMP,
+    });
   };
 
-  onChangeCheckbox = event => {
-    this.setState({ [event.target.name]: event.target.checked });
+  onRemoveMessage = uid => {
+    this.props.firebase.message(uid).remove();
+  };
+
+  onNextPage = () => {
+    this.setState(
+      state => ({ limit: state.limit + 5 }),
+      this.onListenForMessages,
+    );
   };
 
   render() {
-    const {
-      username,
-      email,
-      passwordOne,
-      passwordTwo,
-      isAdmin,
-      error,
-    } = this.state;
-
-    const isInvalid =
-      passwordOne !== passwordTwo ||
-      passwordOne === '' ||
-      email === '' ||
-      username === '';
+    const { text, messages, loading } = this.state;
 
     return (
-      <form onSubmit={this.onSubmit}>
-        <input
-          name="username"
-          value={username}
-          onChange={this.onChange}
-          type="text"
-          placeholder="Full Name"
-        />
-        <input
-          name="email"
-          value={email}
-          onChange={this.onChange}
-          type="text"
-          placeholder="Email Address"
-        />
-        <input
-          name="passwordOne"
-          value={passwordOne}
-          onChange={this.onChange}
-          type="password"
-          placeholder="Password"
-        />
-        <input
-          name="passwordTwo"
-          value={passwordTwo}
-          onChange={this.onChange}
-          type="password"
-          placeholder="Confirm Password"
-        />
-        <label>
-          Admin:
-          <input
-            name="isAdmin"
-            type="checkbox"
-            checked={isAdmin}
-            onChange={this.onChangeCheckbox}
-          />
-        </label>
-        <button disabled={isInvalid} type="submit">
-          Sign Up
-        </button>
+      <AuthUserContext.Consumer>
+        {authUser => (
+          <div>
+            {!loading && messages && (
+              <button type="button" onClick={this.onNextPage} className="button">
+                More
+              </button>
+            )}
 
-        {error && <p>{error.message}</p>}
-      </form>
+            {loading && <div>Loading ...</div>}
+
+            {messages && (
+              <SetUpProfileList
+                authUser={authUser}
+                messages={messages}
+                onEditMessage={this.onEditMessage}
+                onRemoveMessage={this.onRemoveMessage}
+              />
+            )}
+
+            {!messages && <div>There are no messages ...</div>}
+
+            <form
+              onSubmit={event =>
+                this.onCreateMessage(event, authUser)
+              }
+            >
+              <input className="input"
+                type="text"
+                value={text}
+                onChange={this.onChangeText}
+                placeholder="write a message"
+              />
+              <button type="submit" className="button">Send</button>
+            </form>
+          </div>
+        )}
+      </AuthUserContext.Consumer>
     );
   }
 }
 
-const SetUpForm = compose(
-  withRouter,
-  withFirebase,
-)(SetUpFormBase);
-export default SetUpProfile;
-
-export { SetUpForm };
+export default withFirebase(SetUpProfile);
