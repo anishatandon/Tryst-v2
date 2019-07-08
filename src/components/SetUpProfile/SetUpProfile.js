@@ -7,6 +7,8 @@ import SetUpProfileList from './SetUpProfileList';
 import '../Landing/App.css';
 import Slider from 'react-rangeslider';
 
+// var database = firebase.database(); 
+
 class SetUpProfile extends Component {
   constructor(props) {
     super(props);
@@ -16,6 +18,7 @@ class SetUpProfile extends Component {
       gender: 'male',
       genderpref: 'female',
       agepref: 18,
+      location: 0, 
       pictures: null,
       text: '',
       loading: false,
@@ -23,6 +26,26 @@ class SetUpProfile extends Component {
       limit: 5,
     };
   }
+
+  // addProfileInfo(uid, dob, gender, genderpref, agepref, location, pictures) {
+  //   var userData = {
+  //     dob={dob}, 
+  //     gender=gender, 
+  //     genderpref=genderpref, 
+  //     agepref=agepref, 
+  //     location=location,
+  //     pictures=pictures 
+  //   };
+
+  //   // get a new key for the new profile 
+  //   var newProfileKey = firebase.database().ref().child('users').push.key();
+
+  //   // wrtie the new post data to the user 
+  //   var updates = {};
+  //   updates['/users/' + newProfileKey] = userData
+
+  //   return firebase.database().ref().update(updates);
+  // }
 
   componentDidMount() {
     this.onListenForMessages();
@@ -100,7 +123,7 @@ class SetUpProfile extends Component {
   };
 
   render() {
-    const { dob, gender, genderpref, agepref, pictures, text, messages, loading } = this.state;
+    const { dob, gender, genderpref, agepref, location, pictures, text, messages, loading } = this.state;
 
     return (
       <AuthUserContext.Consumer>
@@ -148,33 +171,31 @@ class SetUpProfile extends Component {
             <input type="radio" name="gender preference" value={genderpref}/> Both<br></br>
         {/* age range, location, pictures */}
 
-            <h1>Age range</h1>
-            <Slider
-            value={agepref}
-             orientation="horizontal"
-             onChange={this.onChange}
-               />            
-            <p>Custom range slider:</p>
-            <input type="range" min="1" max="100" value="50" class="slider" id="myRange"/>
-            
-
+            <h1>Min age range</h1>
             <input className="input"
-              type="range"
-              name=""
-              min="18" 
-              max="150" 
-              value="50"
+              type="number"
+              name="agepref"
               value={agepref}
               onChange={this.onChange}
-              placeholder="age preference"
+              placeholder="age preference format: 1850"
             />
-            {/* <input className="input"
-              name="passwordTwo"
-              value={passwordTwo}
+
+            <h1>Location range</h1>
+            <input className="input"
+              type="number"
+              name="location"
+              value={location}
               onChange={this.onChange}
-              type="password"
-              placeholder="Confirm Password"
-            /> */}
+              placeholder="location preference format: 1850"
+            />
+
+            <input className="input" alt="image"
+              type="image"
+              name="pictures"
+              value={pictures}
+              onChange={this.onChange}
+              placeholder="upload image"
+            />
               <button type="submit" className="button">Send</button>
             </form>
           </div>
