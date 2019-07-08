@@ -23,6 +23,12 @@ const INITIAL_STATE = {
   email: '',
   passwordOne: '',
   passwordTwo: '',
+  dob: '',
+  gender: 'male',
+  genderpref: 'female',
+  agepref: 18,
+  location: 0, 
+  pictures: null,
   isAdmin: false,
   error: null,
 };
@@ -45,7 +51,7 @@ class SignUpFormBase extends Component {
   }
 
   onSubmit = event => {
-    const { username, email, passwordOne, isAdmin } = this.state;
+    const { username, email, passwordOne, dob, gender, genderpref, agepref, location, pictures, isAdmin } = this.state;
     const roles = {};
 
     if (isAdmin) {
@@ -59,6 +65,12 @@ class SignUpFormBase extends Component {
         return this.props.firebase.user(authUser.user.uid).set({
           username,
           email,
+          dob, 
+          gender, 
+          genderpref, 
+          agepref, 
+          location, 
+          pictures, 
           roles,
         });
       })
@@ -94,6 +106,12 @@ class SignUpFormBase extends Component {
       email,
       passwordOne,
       passwordTwo,
+      dob,
+      gender,
+      genderpref,
+      agepref,
+      location, 
+      pictures,
       isAdmin,
       error,
     } = this.state;
@@ -135,15 +153,27 @@ class SignUpFormBase extends Component {
               type="password"
               placeholder="Confirm Password"
             />
-            {/* <label>
-              Admin:
-              <input
-                name="isAdmin"
-                type="checkbox"
-                checked={isAdmin}
-                onChange={this.onChangeCheckbox}
-              />
-              </label> */}
+            <input className="input"
+            name="please just work"
+            value={email}
+            onChange={this.onChange}
+            />
+            <label>
+              when were you born?
+              <input className="input"
+                type = "date"
+                name="date of birth"
+                value={dob}
+                onChange={this.onChange}
+                placeholder="Birth?"
+              /> 
+            </label>
+            <label>
+              gender identity? 
+              <input type="radio" name="gender" value= {gender}/> Male<br></br>
+              <input type="radio" name="gender" value={gender}/> Female<br></br>
+            </label>
+
             <button disabled={isInvalid} type="submit" className="button">
               Sign Up
             </button>
