@@ -7,17 +7,17 @@ import { PasswordForgetLink } from '../PasswordForget';
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
 
-import '../Landing/App.css';
+// import '../Landing/App.css';
+import '../../alternatecss.css';
 import logo from '../../logo.svg';
 
 const SignInPage = () => (
   <div className="body">
     <img src={logo} className="logo" alt="logo" />
-    <h1 className="great-vibes">Sign In</h1>
+    <h2>Sign In</h2>
     <SignInForm />
     <SignInGoogle />
     <SignInFacebook />
-    <SignInTwitter />
     <PasswordForgetLink />
     <SignUpLink />
   </div>

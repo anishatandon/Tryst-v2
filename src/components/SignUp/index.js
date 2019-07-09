@@ -186,9 +186,9 @@ class SignUpFormBase extends Component {
 }
 
 const SignUpLink = () => (
-  <p className = "body">
+  <h1>
     Don't have an account? <Link to={ROUTES.SIGN_UP} className="App-link"><br></br>Sign Up</Link>
-  </p>
+  </h1>
 );
 
 const SignUpForm = compose(

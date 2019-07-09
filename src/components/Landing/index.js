@@ -1,37 +1,22 @@
 import React from 'react';
 import logo from '../../logo.svg';
 import { Link } from 'react-router-dom';
-import { Navbar } from 'react-bootstrap';
 // import './App.css';
 import '../../alternatecss.css';
+// import '../../untitled-font-1/styles.css'
 
 const Landing = () => (
+  <div>
     <div className="navbar" >
-      {/* <section className="st-container"> */}
-      {/* <a href = "#home" class = "active"> Home </a> */}
         <Link to='/Signin' className="link">Sign in</Link>
+        <Link to='/Signup' className="link">Sign Up</Link>
     </div>
-      //     {/* <input type="radio" name="radio-set" id="st-control-2"/> */}
-
-
-      //     {/* <input type="radio" name="radio-set" id="st-control-2"/> */}
-      //     <Link to='/Signup' className="App-link">Sign Up</Link>
-
-
-      //     <img src={logo} className="logo" alt="logo" />
-      //     <h1> Tryst </h1>
-      //     <h2>Dating without the hassle </h2>
-
-      // {/* </section>  */}
-
-      // <div className = "text">
-      //   <h2 className = {"great-vibes"}>
-      //     Tryst
-      //     </h2>
-      //       Dating without the hassle <br></br><br></br>
-      //     <Link to='/SignUp' className="App-link">Sign Up</Link><br></br><br></br>
-      //     <Link to='/Signin' className="App-link">Log in</Link>
-      // </div>
+    <div className="st-deco" data-icon="&#xf004;"></div>
+    {/* <img src={logo} className="st-deco" alt="logo" /> */}
+    <h2> Tryst </h2>
+    <p>Dating without the hassle </p>
+  </div>
 );
 
 export default Landing;
+// colours: fa96b5, 
