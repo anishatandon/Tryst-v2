@@ -1,7 +1,6 @@
 import React from 'react';
 import logo from '../../logo.svg';
 import { Link } from 'react-router-dom';
-// import './App.css';
 import '../../alternatecss.css';
 // import '../../untitled-font-1/styles.css'
 
@@ -13,7 +12,7 @@ const Landing = () => (
     </div>
     <div className="st-deco" data-icon="&#xf004;"></div>
     {/* <img src={logo} className="st-deco" alt="logo" /> */}
-    <h2> Tryst </h2>
+    <div className="h2-abs1"> Tryst </div>
     <p>Dating without the hassle </p>
   </div>
 );

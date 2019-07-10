@@ -52,7 +52,25 @@ p {
 	-webkit-backface-visibility: hidden;
 }
 
-h2 {
+.h2-abs2 {
+	font-family: 'Josefin Slab', 'Myriad Pro', Arial, Helvetica, sans-serif;
+	color: #e23a6e;
+	text-shadow: 1px 1px 1px rgba(151,24,64,0.2);
+	position: absolute;
+	font-size: 54px;
+	font-weight: 900;
+	width: 80%;
+	left: 10%;
+	text-align: center;
+	line-height: 50px;
+	margin: -315px 0 0 0;
+	padding: 0;
+	top: 50%;
+	-webkit-backface-visibility: hidden;
+	margin-bottom: 10%
+}
+
+.h2-abs1 {
 	font-family: 'Josefin Slab', 'Myriad Pro', Arial, Helvetica, sans-serif;
 	color: #e23a6e;
 	text-shadow: 1px 1px 1px rgba(151,24,64,0.2);
@@ -128,3 +146,52 @@ h2 {
 	transform: rotate(-45deg) translateY(25%);
 }
 
+form {
+	position: absolute;
+	display: block;
+	width: 100%;
+	margin: 350px 0px 0px -10px;
+	color: black;
+}
+
+input {
+	font-family: 'Josefin Slab', 'Myriad Pro', Arial, Helvetica, sans-serif;
+	font-size: 120%; 
+	position: static;
+	display: block;
+	width: 100%;
+	/* padding: 0px 0px 0px 0px; */
+	text-align: center; 
+	margin: 35px;
+	box-sizing: border-box;
+	border: darkslategray;
+	/* background-color: #65173A; */
+	color: black;
+}
+
+label{
+	font-family: 'Josefin Slab', 'Myriad Pro', Arial, Helvetica, sans-serif;
+	font-size: 130%; 
+	font-weight: bold; 
+	position: static;
+	display: block;
+	width: 100%;
+	padding: 0px 0px 0px 0px;
+	text-align: center; 
+	margin: 100px 0px 0px 40px;
+	box-sizing: border-box;
+	border: darkslategray;
+	/* background-color: #65173A; */
+	color: black;
+}
+
+
+button {
+	position: absolute; 
+	margin: auto;
+	width: 50%;
+	background-color: #ad244f;
+	margin-left: 25%; 
+	color: black; 
+	text-align: center; 
+}

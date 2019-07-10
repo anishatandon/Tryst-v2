@@ -6,14 +6,14 @@ import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
 import * as ROLES from '../../constants/roles';
 
-import '../Landing/App.css';
+import '../../alternatecss.css';
 import logo from '../../logo.svg';
-
+import { ADDRGETNETWORKPARAMS } from 'dns';
 
 const SignUpPage = () => (
   <div className = "body">
-    <img src={logo} className="logo" alt="logo" />
-    <h1 className="great-vibes">Sign Up</h1>
+    <div className="st-deco" data-icon="&#xf004;"></div>
+    <div className="h2-abs2">Sign Up</div>
     <SignUpForm />
   </div>
 );
@@ -24,10 +24,10 @@ const INITIAL_STATE = {
   passwordOne: '',
   passwordTwo: '',
   dob: '',
-  gender: 'male',
-  genderpref: 'female',
-  agepref: 18,
-  location: 0, 
+  gender: '',
+  genderpref: '',
+  agepref: '',
+  location: '', 
   pictures: null,
   isAdmin: false,
   error: null,
@@ -146,6 +146,7 @@ class SignUpFormBase extends Component {
               type="password"
               placeholder="Password"
             />
+
             <input className="input"
               name="passwordTwo"
               value={passwordTwo}
@@ -153,27 +154,47 @@ class SignUpFormBase extends Component {
               type="password"
               placeholder="Confirm Password"
             />
-            <input className="input"
-            name="please just work"
-            value={email}
-            onChange={this.onChange}
+             <input className="input"
+              name="dob"
+              value={dob}
+              onChange={this.onChange}
+              type="text"
+              placeholder="when were you born? dd/mm/yyyy"
             />
-            <label>
-              when were you born?
-              <input className="input"
-                type = "date"
-                name="date of birth"
-                value={dob}
-                onChange={this.onChange}
-                placeholder="Birth?"
-              /> 
-            </label>
-            <label>
+            {/* <label>
               gender identity? 
-              <input type="radio" name="gender" value= {gender}/> Male<br></br>
+              <input type="radio" name="gender" value= {gender} checked={this.state.seoected} /> Male<br></br>
               <input type="radio" name="gender" value={gender}/> Female<br></br>
-            </label>
-
+            </label> */}
+            <input className="input"
+              name="gender"
+              value={gender}
+              onChange={this.onChange}
+              type="text"
+              placeholder="do you identify as male or female?"
+            />
+            <input className="input"
+              name="genderpref"
+              value={genderpref}
+              onChange={this.onChange}
+              type="text"
+              placeholder="do you prefer men, women, or both?"
+            />
+            <input className="input"
+              name="location"
+              value={location}
+              onChange={this.onChange}
+              type="text"
+              placeholder="how far are you willing to search (in kms)?"
+            />
+            <input className="input"
+              name="agepref"
+              value={agepref}
+              onChange={this.onChange}
+              type="text"
+              placeholder="age range? (ex: 18-25)"
+            />
+    
             <button disabled={isInvalid} type="submit" className="button">
               Sign Up
             </button>

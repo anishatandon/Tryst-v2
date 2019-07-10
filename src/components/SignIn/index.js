@@ -7,7 +7,6 @@ import { PasswordForgetLink } from '../PasswordForget';
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
 
-// import '../Landing/App.css';
 import '../../alternatecss.css';
 import logo from '../../logo.svg';
 
