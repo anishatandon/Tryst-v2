@@ -37,10 +37,10 @@ const INITIAL_STATE = {
   location: '', 
   isAdmin: false,
   error: null,
-  avatar: "",
+  filenames: [],
+  downloadURLs: [],
   isUploading: false,
-  progress: 0,
-  avatarURL: ""
+  uploadProgress: 0
 };
 
 const ERROR_CODE_ACCOUNT_EXISTS = 'auth/email-already-in-use';
@@ -61,7 +61,7 @@ class SignUpFormBase extends Component {
   }
 
   onSubmit = event => {
-    const { username, email, passwordOne, dob, gender, genderpref, agepref, location, isAdmin, avatar, isUploading, progress, avatarURL} = this.state;
+    const { username, email, passwordOne, dob, gender, genderpref, agepref, location, isAdmin, filenames, downloadURLs, isUploading, uploadProgress} = this.state;
     const roles = {};
 
     if (isAdmin) {
@@ -81,10 +81,10 @@ class SignUpFormBase extends Component {
           agepref, 
           location, 
           roles,
-          avatar, 
+          filenames, 
+          downloadURLs, 
           isUploading, 
-          progress, 
-          avatarURL
+          uploadProgress
         });
       })
       .then(() => {
@@ -113,15 +113,39 @@ class SignUpFormBase extends Component {
     this.setState({ [event.target.name]: event.target.checked });
   };
 
-  handleUploadSuccess = filename => {
-    this.setState({ progress: 100, isUploading: false });
-    firebase
+  handleUploadStart = () =>
+    this.setState({
+      isUploading: true,
+      uploadProgress: 0
+    });
+
+  handleProgress = progress =>
+    this.setState({
+      uploadProgress: progress
+    });
+
+  handleUploadError = error => {
+    this.setState({
+      isUploading: false
+      // Todo: handle error
+    });
+    console.error(error);
+  };
+
+  handleUploadSuccess = async filename => {
+    const downloadURL = await firebase
       .storage()
       .ref("images")
       .child(filename)
-      .getDownloadURL()
-      .then(url => this.setState({ avatarURL: url }));
-  };
+      .getDownloadURL();
+
+    this.setState(oldState => ({
+      filenames: [...oldState.filenames, filename],
+      downloadURLs: [...oldState.downloadURLs, downloadURL],
+      uploadProgress: 100,
+      isUploading: false
+    }));
+  }
 
   render() {
     const {
@@ -136,10 +160,10 @@ class SignUpFormBase extends Component {
       location, 
       isAdmin,
       error,
-      avatar, 
+      filenames, 
+      downloadURLs, 
       isUploading, 
-      progress, 
-      avatarURL
+      uploadProgress
     } = this.state;
 
     const isInvalid =
@@ -220,20 +244,28 @@ class SignUpFormBase extends Component {
               type="text"
               placeholder="age range? (ex: 18-25)"
             />
+
             <CustomUploadButton
-              accept="image/*"
-              storageRef={firebase.storage().ref('images')}
-              onUploadStart={this.handleUploadStart}
-              onUploadError={this.handleUploadError}
-              onUploadSuccess={this.handleUploadSuccess}
-              onProgress={this.handleProgress}
-              style={{backgroundColor: '#ad244f', color: 'white', padding: 10, borderRadius: 4, width: "50%", textAlign:"center"}}
-              value={avatar}>
-              Add a profile picture! 
-            </CustomUploadButton>
-              {this.state.isUploading && <p>Progress: {this.state.progress}</p>}
-              {this.state.avatarURL && <img src={this.state.avatarURL} />}
-   
+          accept="image/*"
+          name="image-uploader-multiple"
+          randomizeFilename
+          storageRef={firebase.storage().ref("images")}
+          onUploadStart={this.handleUploadStart}
+          onUploadError={this.handleUploadError}
+          onUploadSuccess={this.handleUploadSuccess}
+          onProgress={this.handleProgress}
+          multiple
+          style={{backgroundColor: "#ad244f", color: 'white', width:"50%"}}
+        >Upload photos for your profile! </CustomUploadButton>
+        <p>Progress: {this.state.uploadProgress}</p>
+
+        <p>Filenames: {this.state.filenames.join(", ")}</p>
+
+        <div>
+          {this.state.downloadURLs.map((downloadURL, i) => {
+            return <img key={i} src={downloadURL} />;
+          })}
+        </div>
             <button disabled={isInvalid} type="submit" className="button">
               Sign Up
             </button>
