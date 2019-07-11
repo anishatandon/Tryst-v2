@@ -244,22 +244,21 @@ class SignUpFormBase extends Component {
               type="text"
               placeholder="age range? (ex: 18-25)"
             />
-
             <CustomUploadButton
-          accept="image/*"
-          name="image-uploader-multiple"
-          randomizeFilename
-          storageRef={firebase.storage().ref("images")}
-          onUploadStart={this.handleUploadStart}
-          onUploadError={this.handleUploadError}
-          onUploadSuccess={this.handleUploadSuccess}
-          onProgress={this.handleProgress}
-          multiple
-          style={{backgroundColor: "#ad244f", color: 'white', width:"50%"}}
-        >Upload photos for your profile! </CustomUploadButton>
-        <p>Progress: {this.state.uploadProgress}</p>
-
-        <p>Filenames: {this.state.filenames.join(", ")}</p>
+                accept="image/*"
+                name="image-uploader-multiple"
+                randomizeFilename
+                storageRef={firebase.storage().ref("images")}
+                onUploadStart={this.handleUploadStart}
+                onUploadError={this.handleUploadError}
+                onUploadSuccess={this.handleUploadSuccess}
+                onProgress={this.handleProgress}
+                multiple
+                style={{backgroundColor: "#ad244f", color: 'white', width:"50%"}}>
+                  Upload photos for your profile! 
+              </CustomUploadButton>
+              <p>Progress: {this.state.uploadProgress}</p>
+              <p>Filenames: {this.state.filenames.join(", ")}</p>
 
         <div>
           {this.state.downloadURLs.map((downloadURL, i) => {
