@@ -3,18 +3,25 @@ import { Link, withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
 
 import { withFirebase } from '../Firebase';
+import * as firebase from "firebase";
 import * as ROUTES from '../../constants/routes';
 import * as ROLES from '../../constants/roles';
 
 import '../../alternatecss.css';
 import logo from '../../logo.svg';
 import { ADDRGETNETWORKPARAMS } from 'dns';
+import ProfilePage from '../ProfilePage';
+
+import FileUploader from "react-firebase-file-uploader";
+import CustomUploadButton from 'react-firebase-file-uploader/lib/CustomUploadButton';
+
 
 const SignUpPage = () => (
   <div className = "body">
     <div className="st-deco" data-icon="&#xf004;"></div>
     <div className="h2-abs2">Sign Up</div>
     <SignUpForm />
+    {/* <ProfilePage /> */}
   </div>
 );
 
@@ -28,9 +35,12 @@ const INITIAL_STATE = {
   genderpref: '',
   agepref: '',
   location: '', 
-  pictures: null,
   isAdmin: false,
   error: null,
+  avatar: "",
+  isUploading: false,
+  progress: 0,
+  avatarURL: ""
 };
 
 const ERROR_CODE_ACCOUNT_EXISTS = 'auth/email-already-in-use';
@@ -51,7 +61,7 @@ class SignUpFormBase extends Component {
   }
 
   onSubmit = event => {
-    const { username, email, passwordOne, dob, gender, genderpref, agepref, location, pictures, isAdmin } = this.state;
+    const { username, email, passwordOne, dob, gender, genderpref, agepref, location, isAdmin, avatar, isUploading, progress, avatarURL} = this.state;
     const roles = {};
 
     if (isAdmin) {
@@ -70,8 +80,11 @@ class SignUpFormBase extends Component {
           genderpref, 
           agepref, 
           location, 
-          pictures, 
           roles,
+          avatar, 
+          isUploading, 
+          progress, 
+          avatarURL
         });
       })
       .then(() => {
@@ -100,6 +113,16 @@ class SignUpFormBase extends Component {
     this.setState({ [event.target.name]: event.target.checked });
   };
 
+  handleUploadSuccess = filename => {
+    this.setState({ progress: 100, isUploading: false });
+    firebase
+      .storage()
+      .ref("images")
+      .child(filename)
+      .getDownloadURL()
+      .then(url => this.setState({ avatarURL: url }));
+  };
+
   render() {
     const {
       username,
@@ -111,9 +134,12 @@ class SignUpFormBase extends Component {
       genderpref,
       agepref,
       location, 
-      pictures,
       isAdmin,
       error,
+      avatar, 
+      isUploading, 
+      progress, 
+      avatarURL
     } = this.state;
 
     const isInvalid =
@@ -194,7 +220,20 @@ class SignUpFormBase extends Component {
               type="text"
               placeholder="age range? (ex: 18-25)"
             />
-    
+            <CustomUploadButton
+              accept="image/*"
+              storageRef={firebase.storage().ref('images')}
+              onUploadStart={this.handleUploadStart}
+              onUploadError={this.handleUploadError}
+              onUploadSuccess={this.handleUploadSuccess}
+              onProgress={this.handleProgress}
+              style={{backgroundColor: '#ad244f', color: 'white', padding: 10, borderRadius: 4, width: "50%", textAlign:"center"}}
+              value={avatar}>
+              Add a profile picture! 
+            </CustomUploadButton>
+              {this.state.isUploading && <p>Progress: {this.state.progress}</p>}
+              {this.state.avatarURL && <img src={this.state.avatarURL} />}
+   
             <button disabled={isInvalid} type="submit" className="button">
               Sign Up
             </button>

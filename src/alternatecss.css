@@ -152,7 +152,12 @@ form {
 	width: 100%;
 	margin: 350px 0px 0px -10px;
 	color: black;
+	/* justify-content: center; */
+	display:flex;
+	flex-direction: column;
+	align-items: center;
 }
+
 
 input {
 	font-family: 'Josefin Slab', 'Myriad Pro', Arial, Helvetica, sans-serif;
@@ -187,11 +192,14 @@ label{
 
 
 button {
-	position: absolute; 
-	margin: auto;
+	/* position: absolute;  */
+	/* margin: auto; */
+	font-family: 'Josefin Slab', 'Myriad Pro', Arial, Helvetica, sans-serif;
+	font-size: 100%; 
+	font-weight: bold; 
 	width: 50%;
 	background-color: #ad244f;
-	margin-left: 25%; 
-	color: black; 
+	margin-left: 3%; 
+	color: white; 
 	text-align: center; 
 }

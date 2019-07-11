@@ -10,6 +10,7 @@ const HomePage = () => (
     <h1>Home Page</h1>
     <p>The Home Page is accessible by every signed in user.</p>
     <Link to='/setupprofile' className="App-link">Set Profile</Link>
+    <Link to='/profilepage' className="App-link"> Review Profile </Link>
     <Messages />
   </div>
 );

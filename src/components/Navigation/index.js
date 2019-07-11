@@ -20,13 +20,13 @@ const Navigation = () => (
 
 const NavigationAuth = ({ authUser }) => (
   <ul>
-    <SignOutButton />
+    {/* <SignOutButton /> */}
   </ul>
 );
 
 const NavigationNonAuth = () => (
   <ul>
-    <Link to={ROUTES.SIGN_IN}>Sign In</Link>
+    {/* <Link to={ROUTES.SIGN_IN}>Sign In</Link> */}
   </ul>
 );
 

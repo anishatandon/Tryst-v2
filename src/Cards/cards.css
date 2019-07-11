@@ -1,0 +1,104 @@
+
+container {
+    flex: 1;
+} 
+
+background  {
+    background-color: 'black';
+} 
+
+topSpace {
+    flex: 1;
+}  
+
+foreground {
+    flex: 1;  
+}
+
+textContainer {
+    flex: 3;
+    justify-content: 'center';
+    background-color: 'transparent';
+}
+
+matchText {
+    text-align: 'center';
+    color: 'white';
+    font-size: 60;
+    font-family: 'Satisfy';
+}
+
+matchContainer {
+    flex: 3;
+    justifyContent: 'center';
+    alignItems: 'center';
+    flexDirection: 'row';
+}
+
+profile: {
+    width: PROFILE_WIDTH,
+    height: PROFILE_WIDTH,
+    borderRadius: PROFILE_WIDTH / 2,
+    overflow: 'hidden',
+    borderWidth: PROFILE_BORDER_WIDTH,
+    borderColor: GlobalFunctions.style().color,
+},
+profileAndroid: {
+    width: PROFILE_WIDTH + PROFILE_BORDER_WIDTH * 2,
+    height: PROFILE_WIDTH + PROFILE_BORDER_WIDTH * 2,
+    alignItems: 'center',
+    justifyContent: 'center',
+},
+leftProfile: {
+    marginRight: -10,
+},
+rightProfile: {
+    marginLeft: -10,
+},
+profileAndroidContainer: {
+    width: PROFILE_WIDTH,
+    height: PROFILE_WIDTH,
+},
+image: {
+    flex: 1,
+},
+imageAndroid: {
+    width: PROFILE_WIDTH,
+    height: PROFILE_WIDTH,
+    borderRadius: PROFILE_WIDTH / 2,
+},
+fixCircleClipping: {
+    position: 'absolute',
+    top: -PROFILE_BORDER_WIDTH,
+    bottom: -PROFILE_BORDER_WIDTH,
+    right: -PROFILE_BORDER_WIDTH,
+    left: -PROFILE_BORDER_WIDTH,
+    borderRadius: PROFILE_WIDTH / 2 + PROFILE_BORDER_WIDTH / 2,
+    borderWidth: PROFILE_BORDER_WIDTH,
+    borderColor: GlobalFunctions.style().color
+},
+buttonContainer: {
+    flex: 5,
+    justifyContent: 'center'
+},
+rectButton: {
+    height: 60,
+    marginTop: 10,
+    marginLeft: 16,
+    marginRight: 16,
+},
+buttonText: {
+    color: "white",
+    fontWeight:"600",
+},
+matchButton: {
+    backgroundColor: GlobalFunctions.style().color,
+    flex: 1,
+},
+closeButton: {
+    backgroundColor: GlobalFunctions.style().color,
+    flex: 1,
+},
+bottomBuffer: {
+    flex: 0,
+}
