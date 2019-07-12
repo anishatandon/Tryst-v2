@@ -20,6 +20,18 @@
 	border:1px solid goldenrod;  
 }
 
+.link-2 {
+	float: center;
+	display: block;
+	color: black;
+	text-align: center;
+	/* padding: 14px 16px; */
+	text-decoration: none;
+	  font-size: 17px;
+	  border:1px solid goldenrod;  
+	  margin-top: 20%; 
+  }
+
 .link:hover {
   background-color: #f1f1f1;
   color: black;
@@ -63,7 +75,7 @@ p {
 	left: 10%;
 	text-align: center;
 	line-height: 50px;
-	margin: -315px 0 0 0;
+	margin: -15% 0 0 0;
 	padding: 0;
 	top: 50%;
 	-webkit-backface-visibility: hidden;
@@ -147,7 +159,9 @@ p {
 }
 
 form {
-	position: absolute;
+	font-family: 'Josefin Slab', 'Myriad Pro', Arial, Helvetica, sans-serif;
+	font-size: 120%; 
+	position: static;
 	display: block;
 	width: 100%;
 	margin: 350px 0px 0px -10px;
@@ -156,6 +170,7 @@ form {
 	display:flex;
 	flex-direction: column;
 	align-items: center;
+	z-index: -1;
 }
 
 
@@ -167,7 +182,7 @@ input {
 	width: 100%;
 	/* padding: 0px 0px 0px 0px; */
 	text-align: center; 
-	margin: 35px;
+	margin: 15px;
 	box-sizing: border-box;
 	border: darkslategray;
 	/* background-color: #65173A; */

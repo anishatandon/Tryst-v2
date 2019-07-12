@@ -11,12 +11,12 @@ import '../../alternatecss.css';
 import logo from '../../logo.svg';
 
 const SignInPage = () => (
-  <div className="body">
-    <img src={logo} className="logo" alt="logo" />
-    <h2>Sign In</h2>
+  <div>
+    <div className="st-deco" data-icon="&#xf004;"></div>
+    <div className="h2-abs2">Sign In</div>
     <SignInForm />
     <SignInGoogle />
-    <SignInFacebook />
+    {/* <SignInFacebook /> */}
     <PasswordForgetLink />
     <SignUpLink />
   </div>
@@ -71,7 +71,7 @@ class SignInFormBase extends Component {
     const isInvalid = password === '' || email === '';
 
     return (
-      <form onSubmit={this.onSubmit}>
+      <form onSubmit={this.onSubmit} className="form">
         <input className="input"
           name="email"
           value={email}

@@ -8,11 +8,6 @@ import * as ROUTES from '../../constants/routes';
 import * as ROLES from '../../constants/roles';
 
 import '../../alternatecss.css';
-import logo from '../../logo.svg';
-import { ADDRGETNETWORKPARAMS } from 'dns';
-import ProfilePage from '../ProfilePage';
-
-import FileUploader from "react-firebase-file-uploader";
 import CustomUploadButton from 'react-firebase-file-uploader/lib/CustomUploadButton';
 
 
@@ -211,11 +206,6 @@ class SignUpFormBase extends Component {
               type="text"
               placeholder="when were you born? dd/mm/yyyy"
             />
-            {/* <label>
-              gender identity? 
-              <input type="radio" name="gender" value= {gender} checked={this.state.seoected} /> Male<br></br>
-              <input type="radio" name="gender" value={gender}/> Female<br></br>
-            </label> */}
             <input className="input"
               name="gender"
               value={gender}
@@ -257,8 +247,8 @@ class SignUpFormBase extends Component {
                 style={{backgroundColor: "#ad244f", color: 'white', width:"50%"}}>
                   Upload photos for your profile! 
               </CustomUploadButton>
-              <p>Progress: {this.state.uploadProgress}</p>
-              <p>Filenames: {this.state.filenames.join(", ")}</p>
+              {/* <p>Progress: {this.state.uploadProgress}</p>
+              <p>Filenames: {this.state.filenames.join(", ")}</p> */}
 
         <div>
           {this.state.downloadURLs.map((downloadURL, i) => {
