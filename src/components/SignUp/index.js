@@ -145,10 +145,15 @@ class SignUpFormBase extends Component {
     }));
   };
 
-  handleClick = async Button => {
-    this.setState(
-      this.state.interests= this.state.interests.push(Button.id)
-    )
+  handleClick = () => {
+    const interestArray = this.state.interests.slice(0);
+
+    interestArray.push({
+      name: 'SOcial Service'
+    });
+    this.setState({
+        interests: interestArray,
+    });
   };
 
   render() {
