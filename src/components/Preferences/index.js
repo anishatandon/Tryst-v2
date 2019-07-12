@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './Preferences.css';
-import logo from '../logo.svg'
 
 
 class Preferences extends Component {
@@ -12,7 +11,7 @@ class Preferences extends Component {
 		return (
 			<div className="body">
 				<div className="header">
-					<img src={logo} className="logo" alt="logo" />
+					{/* <img src={logo} className="logo" alt="logo" /> */}
 					<h1> Preferences</h1>
 
 					I'm interested in:  <br></br><br></br>

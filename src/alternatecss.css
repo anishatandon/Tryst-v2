@@ -217,4 +217,28 @@ button {
 	margin-left: 3%; 
 	color: white; 
 	text-align: center; 
+/* 
+	border: none;
+
+	padding: 20px;
+	display: inline-block;
+	font-size: 15px;
+	margin: 8px 10px;
+	cursor: pointer;
+	border-radius: 75%;
+	width:95px;
+	height: 85px; */
+}
+
+.button-2 {
+	font-family: 'Josefin Slab', 'Myriad Pro', Arial, Helvetica, sans-serif;
+	font-size: 100%; 
+	margin: 8px 10px;
+	cursor: pointer;
+	border-radius: 75%;
+	width:95px;
+	height: 85px;
+	text-align: center;
+	background-color: #ad244f;
+	color: white;
 }

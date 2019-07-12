@@ -7,4 +7,5 @@ export const PASSWORD_FORGET = '/pw-forget';
 export const ADMIN = '/admin';
 export const ADMIN_DETAILS = '/admin/:id';
 export const SET_UP_PROFILE = '/setupprofile';
-export const PROFILE_PAGE = '/profilepage';
+export const MATCH_VIEW = '/matchview';
+

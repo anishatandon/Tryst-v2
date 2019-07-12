@@ -9,6 +9,7 @@ import * as ROLES from '../../constants/roles';
 
 import '../../alternatecss.css';
 import CustomUploadButton from 'react-firebase-file-uploader/lib/CustomUploadButton';
+import { Button } from 'semantic-ui-react';
 
 
 const SignUpPage = () => (
@@ -35,7 +36,8 @@ const INITIAL_STATE = {
   filenames: [],
   downloadURLs: [],
   isUploading: false,
-  uploadProgress: 0
+  uploadProgress: 0, 
+  interests: []
 };
 
 const ERROR_CODE_ACCOUNT_EXISTS = 'auth/email-already-in-use';
@@ -56,7 +58,7 @@ class SignUpFormBase extends Component {
   }
 
   onSubmit = event => {
-    const { username, email, passwordOne, dob, gender, genderpref, agepref, location, isAdmin, filenames, downloadURLs, isUploading, uploadProgress} = this.state;
+    const { username, email, passwordOne, dob, gender, genderpref, agepref, location, isAdmin, filenames, downloadURLs, isUploading, uploadProgress, interests} = this.state;
     const roles = {};
 
     if (isAdmin) {
@@ -79,7 +81,8 @@ class SignUpFormBase extends Component {
           filenames, 
           downloadURLs, 
           isUploading, 
-          uploadProgress
+          uploadProgress, 
+          interests
         });
       })
       .then(() => {
@@ -140,7 +143,13 @@ class SignUpFormBase extends Component {
       uploadProgress: 100,
       isUploading: false
     }));
-  }
+  };
+
+  handleClick = async Button => {
+    this.setState(
+      this.state.interests= this.state.interests.push(Button.id)
+    )
+  };
 
   render() {
     const {
@@ -249,7 +258,20 @@ class SignUpFormBase extends Component {
               </CustomUploadButton>
               {/* <p>Progress: {this.state.uploadProgress}</p>
               <p>Filenames: {this.state.filenames.join(", ")}</p> */}
-
+              <div>
+              <h1>
+              Pick your interests: </h1>
+            <button className="button-2" id="Social Service" onClick={() => this.handleClick(Button)}>Social Service</button>
+					<button className="button-2" id="Outdoor activities">Outdoor activities</button>
+					<button className="button-2" id = "Theater">Theater</button>
+					<button className="button-2" id="Film">Film</button>
+					<button className="button-2" id="Sports">Sports</button>
+					<button className="button-2" id="Music">Music</button>
+					<button className="button-2" id="Business">Business</button>
+					<button className="button-2" id="Politics">Politics</button>
+					<button className="button-2" id="Technology">Technology</button>
+            </div>
+        
         <div>
           {this.state.downloadURLs.map((downloadURL, i) => {
             return <img key={i} src={downloadURL} />;

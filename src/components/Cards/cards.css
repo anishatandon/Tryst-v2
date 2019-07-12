@@ -30,14 +30,14 @@ matchText {
 
 matchContainer {
     flex: 3;
-    justifyContent: 'center';
-    alignItems: 'center';
-    flexDirection: 'row';
+    justify-Content: 'center';
+    align-Items: 'center';
+    flex-Direction: 'row';
 }
 
-profile: {
-    width: PROFILE_WIDTH,
-    height: PROFILE_WIDTH,
+profile {
+    width: PROFILE_WIDTH;
+    height: PROFILE_WIDTH;
     borderRadius: PROFILE_WIDTH / 2,
     overflow: 'hidden',
     borderWidth: PROFILE_BORDER_WIDTH,
