@@ -10,7 +10,7 @@ import HomePage from '../Home';
 import AccountPage from '../Account';
 import AdminPage from '../Admin';
 import SetUpProfile from '../SetUpProfile';
-import CardExampleCard from '../Cards';
+import Card from '../Cards/Card';
 import ReviewProfile from '../ReviewProfile';
 
 import * as ROUTES from '../../constants/routes';
@@ -34,7 +34,7 @@ const App = () => (
       <Route path={ROUTES.ACCOUNT} component={AccountPage} />
       <Route path={ROUTES.ADMIN} component={AdminPage} />
       <Route path={ROUTES.SET_UP_PROFILE} component={SetUpProfile} />
-      <Route path={ROUTES.CARDS} component={CardExampleCard} />
+      <Route path={ROUTES.CARDS} component={Card} />
       <Route path={ROUTES.REVIEW_PROFILE} component={ReviewProfile} />
     </div> 
   </Router>
