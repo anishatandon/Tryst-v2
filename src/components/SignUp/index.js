@@ -149,7 +149,7 @@ class SignUpFormBase extends Component {
     const interestArray = this.state.interests.slice(0);
 
     interestArray.push({
-      name: 'SOcial Service'
+      name: 'Social Service'
     });
     this.setState({
         interests: interestArray,
