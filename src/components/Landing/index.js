@@ -1,22 +1,21 @@
 import React from 'react';
 import logo from '../../logo.svg';
 import { Link } from 'react-router-dom';
-import './App.css';
-
+import '../../alternatecss.css';
+// import '../../untitled-font-1/styles.css'
 
 const Landing = () => (
-  <div className="App">
-      <header className="header">
-        <img src={logo} className="logo" alt="logo" />
-        <h2 className = {"great-vibes"}>
-          Tryst
-          </h2>
-          <body className="garamond-h3">
-            Dating without the hassle <br></br><br></br>
-          <Link to='/SignUp' className="App-link">Sign Up</Link><br></br><br></br>
-          <Link to='/Signin' className="App-link">Log in</Link>
-          </body>
-      </header></div>
+  <div>
+    <div className="navbar" >
+        <Link to='/Signin' className="link">Sign in</Link>
+        <Link to='/Signup' className="link">Sign Up</Link>
+    </div>
+    <div className="st-deco" data-icon="&#xf004;"></div>
+    {/* <img src={logo} className="st-deco" alt="logo" /> */}
+    <div className="h2-abs1"> Tryst </div>
+    <p>Dating without the hassle </p>
+  </div>
 );
 
 export default Landing;
+// colours: fa96b5, 
