@@ -47,7 +47,7 @@ const actionsStyles = {
 
 class Cards extends Component {
   state = {
-    cards: Data
+    cards: [Card1, Card2]
 
   };
 
