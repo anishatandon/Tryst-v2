@@ -7,7 +7,7 @@ import * as ROUTES from '../../constants/routes';
 import logo from '../../logo.svg'
 
 const PasswordForgetPage = () => (
-  <div className="body">
+  <div>
     <img src={logo} className="logo" alt="logo" />
     <h1>Reset Password</h1>
     <PasswordForgetForm />
@@ -71,7 +71,7 @@ class PasswordForgetFormBase extends Component {
 
 const PasswordForgetLink = () => (
   <p>
-    <Link to={ROUTES.PASSWORD_FORGET} className="App-link">Forgot Password?</Link>
+    <Link to={ROUTES.PASSWORD_FORGET} className="link-2">Forgot Password?</Link>
   </p>
 );
 

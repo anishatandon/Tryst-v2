@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './ReviewProfile.css';
-import logo from '../logo.svg'
-import picture from '../frankocean.jpg'
+// import logo from '../logo.svg'
+// import picture from '../frankocean.jpg'
 
 
 class ReviewProfile extends Component {
@@ -9,9 +9,9 @@ class ReviewProfile extends Component {
 		return (
 			<div className="body">
 				<div className="header">
-					<img src={logo} className="logo" alt="logo" />
+					{/* <img src={logo} className="logo" alt="logo" /> */}
 					<h1> Review your Profile</h1>
-					<img src={picture} className="photo" alt="picture" /> <br></br>
+					{/* <img src={picture} className="photo" alt="picture" /> <br></br> */}
 					Name: _________________ <br></br><br></br>
 					Date of Birth: <br></br><br></br>
 					Gender orientation: <br></br><br></br>

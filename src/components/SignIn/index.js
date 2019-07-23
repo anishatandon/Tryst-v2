@@ -7,17 +7,16 @@ import { PasswordForgetLink } from '../PasswordForget';
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
 
-import '../Landing/App.css';
+import '../../alternatecss.css';
 import logo from '../../logo.svg';
 
 const SignInPage = () => (
-  <div className="body">
-    <img src={logo} className="logo" alt="logo" />
-    <h1 className="great-vibes">Sign In</h1>
+  <div>
+    <div className="st-deco" data-icon="&#xf004;"></div>
+    <div className="h2-abs2">Sign In</div>
     <SignInForm />
     <SignInGoogle />
-    <SignInFacebook />
-    <SignInTwitter />
+    {/* <SignInFacebook /> */}
     <PasswordForgetLink />
     <SignUpLink />
   </div>
@@ -72,7 +71,7 @@ class SignInFormBase extends Component {
     const isInvalid = password === '' || email === '';
 
     return (
-      <form onSubmit={this.onSubmit}>
+      <form onSubmit={this.onSubmit} className="form">
         <input className="input"
           name="email"
           value={email}
