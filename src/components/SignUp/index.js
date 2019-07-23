@@ -258,12 +258,21 @@ class SignUpFormBase extends Component {
                 onUploadSuccess={this.handleUploadSuccess}
                 onProgress={this.handleProgress}
                 multiple
-                style={{backgroundColor: "#ad244f", color: 'white', width:"50%"}}>
+                style={{backgroundColor: "#ad244f", 
+                        border: "none",
+                        color: "white",
+                        padding: "20px",
+                        textAlign: "center",
+                        display: "inline-block",
+                        fontSize: "16px",
+                        marginTop: "4px", 
+                        marginRight: "2px",
+                        cursor: "pointer"}}>
                   Upload photos for your profile! 
               </CustomUploadButton>
               {/* <p>Progress: {this.state.uploadProgress}</p>
               <p>Filenames: {this.state.filenames.join(", ")}</p> */}
-              <div>
+              {/* <div>
               <h1>
               Pick your interests: </h1>
             <button className="button-2" id="Social Service" onClick={() => this.handleClick(Button)}>Social Service</button>
@@ -275,7 +284,7 @@ class SignUpFormBase extends Component {
 					<button className="button-2" id="Business">Business</button>
 					<button className="button-2" id="Politics">Politics</button>
 					<button className="button-2" id="Technology">Technology</button>
-            </div>
+            </div> */}
         
         <div>
           {this.state.downloadURLs.map((downloadURL, i) => {

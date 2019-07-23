@@ -1,5 +1,6 @@
 * {background-color: white}
-@import url('//fonts.googleapis.com/css?family=Josefin+Slab:400,700');
+/* @import url('//fonts.googleapis.com/css?family=Josefin+Slab:400,700'); */
+@import url('https://fonts.googleapis.com/css?family=Trocchi&display=swap');
 
 .navbar {
   overflow: hidden;
@@ -42,14 +43,16 @@
   color: white;
 }
 
+
 h1 {
+	/* actually kind of small */ 
 	text-align: center; 
 	font-size: 100%; 
-	font-family: 'Josefin Slab', 'Myriad Pro', Arial, Helvetica, sans-serif
+	font-family: 'Trocchi', serif;
 }
 
 p {
-	font-family: 'Josefin Slab', 'Myriad Pro', Arial, Helvetica, sans-serif;
+	font-family: 'Trocchi', serif;
 	position: absolute;
 	text-align: center;
 	font-size: 16px;
@@ -65,17 +68,17 @@ p {
 }
 
 .h2-abs2 {
-	font-family: 'Josefin Slab', 'Myriad Pro', Arial, Helvetica, sans-serif;
+	font-family: 'Trocchi', serif;
 	color: #e23a6e;
 	text-shadow: 1px 1px 1px rgba(151,24,64,0.2);
 	position: absolute;
-	font-size: 54px;
-	font-weight: 900;
+	font-size: 250%;
+	/* font-weight: 900; */
 	width: 80%;
 	left: 10%;
 	text-align: center;
 	line-height: 50px;
-	margin: -15% 0 0 0;
+	margin: -450px 0 0 0;
 	padding: 0;
 	top: 50%;
 	-webkit-backface-visibility: hidden;
@@ -83,7 +86,7 @@ p {
 }
 
 .h2-abs1 {
-	font-family: 'Josefin Slab', 'Myriad Pro', Arial, Helvetica, sans-serif;
+	font-family: 'Trocchi', serif;
 	color: #e23a6e;
 	text-shadow: 1px 1px 1px rgba(151,24,64,0.2);
 	position: absolute;
@@ -159,7 +162,7 @@ p {
 }
 
 form {
-	font-family: 'Josefin Slab', 'Myriad Pro', Arial, Helvetica, sans-serif;
+	font-family: 'Trocchi', serif;
 	font-size: 120%; 
 	position: static;
 	display: block;
@@ -175,7 +178,7 @@ form {
 
 
 input {
-	font-family: 'Josefin Slab', 'Myriad Pro', Arial, Helvetica, sans-serif;
+	font-family: 'Trocchi', serif;
 	font-size: 120%; 
 	position: static;
 	display: block;
@@ -190,7 +193,7 @@ input {
 }
 
 label{
-	font-family: 'Josefin Slab', 'Myriad Pro', Arial, Helvetica, sans-serif;
+	font-family: 'Trocchi', serif;
 	font-size: 130%; 
 	font-weight: bold; 
 	position: static;
@@ -209,7 +212,7 @@ label{
 button {
 	/* position: absolute;  */
 	/* margin: auto; */
-	font-family: 'Josefin Slab', 'Myriad Pro', Arial, Helvetica, sans-serif;
+	font-family: 'Trocchi', serif;
 	font-size: 100%; 
 	font-weight: bold; 
 	width: 50%;
@@ -231,7 +234,7 @@ button {
 }
 
 .button-2 {
-	font-family: 'Josefin Slab', 'Myriad Pro', Arial, Helvetica, sans-serif;
+	font-family: 'Trocchi', serif;
 	font-size: 100%; 
 	margin: 8px 10px;
 	cursor: pointer;

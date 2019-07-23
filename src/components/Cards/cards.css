@@ -1,104 +1,244 @@
+* {background-color: white}
+@import url('//fonts.googleapis.com/css?family=Josefin+Slab:400,700');
+
+.navbar {
+  overflow: hidden;
+  background-color: #ad244f;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.link {
+  float: left;
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+	font-size: 17px;
+	border:1px solid goldenrod;  
+}
+
+.link-2 {
+	float: center;
+	display: block;
+	color: black;
+	text-align: center;
+	/* padding: 14px 16px; */
+	text-decoration: none;
+	  font-size: 17px;
+	  border:1px solid goldenrod;  
+	  margin-top: 20%; 
+  }
+
+.link:hover {
+  background-color: #f1f1f1;
+  color: black;
+}
+
+.link:active {
+  background-color: #821134;
+  color: white;
+}
+
+h1 {
+	text-align: center; 
+	font-size: 100%; 
+	font-family: 'Josefin Slab', 'Myriad Pro', Arial, Helvetica, sans-serif
+}
+
+p {
+	font-family: 'Josefin Slab', 'Myriad Pro', Arial, Helvetica, sans-serif;
+	position: absolute;
+	text-align: center;
+	font-size: 16px;
+	line-height: 22px;
+	color: #8b8b8b;
+	z-index: 2;
+	padding: 0;
+	width: 50%;
+	left: 25%;
+	top: 50%;
+	margin: 10px 0 0 0;
+	-webkit-backface-visibility: hidden;
+}
+
+.h2-abs2 {
+	font-family: 'Josefin Slab', 'Myriad Pro', Arial, Helvetica, sans-serif;
+	color: #e23a6e;
+	text-shadow: 1px 1px 1px rgba(151,24,64,0.2);
+	position: absolute;
+	font-size: 54px;
+	font-weight: 900;
+	width: 80%;
+	left: 10%;
+	text-align: center;
+	line-height: 50px;
+	margin: -15% 0 0 0;
+	padding: 0;
+	top: 50%;
+	-webkit-backface-visibility: hidden;
+	margin-bottom: 10%
+}
+
+.h2-abs1 {
+	font-family: 'Josefin Slab', 'Myriad Pro', Arial, Helvetica, sans-serif;
+	color: #e23a6e;
+	text-shadow: 1px 1px 1px rgba(151,24,64,0.2);
+	position: absolute;
+	font-size: 54px;
+	font-weight: 900;
+	width: 80%;
+	left: 10%;
+	text-align: center;
+	line-height: 50px;
+	margin: -70px 0 0 0;
+	padding: 0;
+	top: 50%;
+	-webkit-backface-visibility: hidden;
+}
+
+.logo {
+	padding-top: 10%;
+	/* animation: App-logo-spin infinite 20s linear; */
+	display: block;
+	margin-left: auto; 
+	margin-right: auto; 
+	height: auto;
+	width: 70%;
+	pointer-events: none;
+}
+
+.text {
+	background-color: #65173A;
+	color: black;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	font-size: calc(10px + 2vmin);
+	font-family: 'Times New Roman', Times, serif;
+	font-weight: bold; 
+}
+
+.st-deco{
+	width: 200px;
+	height: 200px;
+	position: absolute;
+	top: 0px;
+	left: 50%;
+	margin-left: -100px;
+	background: #fa96b5;
+	-webkit-transform: translateY(-50%) rotate(45deg);
+	-moz-transform: translateY(-50%) rotate(45deg);
+	-o-transform: translateY(-50%) rotate(45deg);
+	-ms-transform: translateY(-50%) rotate(45deg);
+	transform: translateY(-50%) rotate(45deg); 
+}
+
+[data-icon]:after {
+	content: attr(data-icon);
+	font-family: 'FontAwesome';
+	color: #fff;
+	text-shadow: 1px 1px 1px rgba(151,24,64,0.2);
+	position: absolute;
+	width: 200px;
+	height: 200px;
+	line-height: 200px;
+	text-align: center;
+	font-size: 90px;
+	top: 50%;
+	left: 50%;
+	margin: -100px 0 0 -100px;
+	-webkit-transform: rotate(-45deg) translateY(25%);
+	-moz-transform: rotate(-45deg) translateY(25%);
+	-o-transform: rotate(-45deg) translateY(25%);
+	-ms-transform: rotate(-45deg) translateY(25%);
+	transform: rotate(-45deg) translateY(25%);
+}
+
+form {
+	font-family: 'Josefin Slab', 'Myriad Pro', Arial, Helvetica, sans-serif;
+	font-size: 120%; 
+	position: static;
+	display: block;
+	width: 100%;
+	margin: 350px 0px 0px -10px;
+	color: black;
+	/* justify-content: center; */
+	display:flex;
+	flex-direction: column;
+	align-items: center;
+	z-index: -1;
+}
+
+
+input {
+	font-family: 'Josefin Slab', 'Myriad Pro', Arial, Helvetica, sans-serif;
+	font-size: 120%; 
+	position: static;
+	display: block;
+	width: 100%;
+	/* padding: 0px 0px 0px 0px; */
+	text-align: center; 
+	margin: 15px;
+	box-sizing: border-box;
+	border: darkslategray;
+	/* background-color: #65173A; */
+	color: black;
+}
+
+label{
+	font-family: 'Josefin Slab', 'Myriad Pro', Arial, Helvetica, sans-serif;
+	font-size: 130%; 
+	font-weight: bold; 
+	position: static;
+	display: block;
+	width: 100%;
+	padding: 0px 0px 0px 0px;
+	text-align: center; 
+	margin: 100px 0px 0px 40px;
+	box-sizing: border-box;
+	border: darkslategray;
+	/* background-color: #65173A; */
+	color: black;
+}
+
+
+button {
+	/* position: absolute;  */
+	/* margin: auto; */
+	font-family: 'Josefin Slab', 'Myriad Pro', Arial, Helvetica, sans-serif;
+	font-size: 100%; 
+	font-weight: bold; 
+	width: 50%;
+	background-color: #ad244f;
+	margin-left: 3%; 
+	color: white; 
+	text-align: center; 
 /* 
-container {
-    flex: 1;
-} 
+	border: none;
 
-background  {
-    background-color: 'black';
-} 
-
-topSpace {
-    flex: 1;
-}  
-
-foreground {
-    flex: 1;  
+	padding: 20px;
+	display: inline-block;
+	font-size: 15px;
+	margin: 8px 10px;
+	cursor: pointer;
+	border-radius: 75%;
+	width:95px;
+	height: 85px; */
 }
 
-textContainer {
-    flex: 3;
-    justify-content: 'center';
-    background-color: 'transparent';
+.button-2 {
+	font-family: 'Josefin Slab', 'Myriad Pro', Arial, Helvetica, sans-serif;
+	font-size: 100%; 
+	margin: 8px 10px;
+	cursor: pointer;
+	border-radius: 75%;
+	width:95px;
+	height: 85px;
+	text-align: center;
+	background-color: #ad244f;
+	color: white;
 }
-
-matchText {
-    text-align: 'center';
-    color: 'white';
-    font-size: 60;
-    font-family: 'Satisfy';
-}
-
-matchContainer {
-    flex: 3;
-    justify-Content: 'center';
-    align-Items: 'center';
-    flex-Direction: 'row';
-}
-
-profile {
-    width: PROFILE_WIDTH;
-    height: PROFILE_WIDTH;
-    borderRadius: PROFILE_WIDTH / 2,
-    overflow: 'hidden',
-    borderWidth: PROFILE_BORDER_WIDTH,
-    borderColor: GlobalFunctions.style().color,
-},
-profileAndroid: {
-    width: PROFILE_WIDTH + PROFILE_BORDER_WIDTH * 2,
-    height: PROFILE_WIDTH + PROFILE_BORDER_WIDTH * 2,
-    alignItems: 'center',
-    justifyContent: 'center',
-},
-leftProfile: {
-    marginRight: -10,
-},
-rightProfile: {
-    marginLeft: -10,
-},
-profileAndroidContainer: {
-    width: PROFILE_WIDTH,
-    height: PROFILE_WIDTH,
-},
-image: {
-    flex: 1,
-},
-imageAndroid: {
-    width: PROFILE_WIDTH,
-    height: PROFILE_WIDTH,
-    borderRadius: PROFILE_WIDTH / 2,
-},
-fixCircleClipping: {
-    position: 'absolute',
-    top: -PROFILE_BORDER_WIDTH,
-    bottom: -PROFILE_BORDER_WIDTH,
-    right: -PROFILE_BORDER_WIDTH,
-    left: -PROFILE_BORDER_WIDTH,
-    borderRadius: PROFILE_WIDTH / 2 + PROFILE_BORDER_WIDTH / 2,
-    borderWidth: PROFILE_BORDER_WIDTH,
-    borderColor: GlobalFunctions.style().color
-},
-buttonContainer: {
-    flex: 5,
-    justifyContent: 'center'
-},
-rectButton: {
-    height: 60,
-    marginTop: 10,
-    marginLeft: 16,
-    marginRight: 16,
-},
-buttonText: {
-    color: "white",
-    fontWeight:"600",
-},
-matchButton: {
-    backgroundColor: GlobalFunctions.style().color,
-    flex: 1,
-},
-closeButton: {
-    backgroundColor: GlobalFunctions.style().color,
-    flex: 1,
-},
-bottomBuffer: {
-    flex: 0,
-} */

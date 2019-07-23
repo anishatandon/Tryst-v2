@@ -17,7 +17,7 @@ class Cards extends Component {
       <CardWrapper style={wrapperStyle}>
         <Card style={cardStyle}>
           Hello World!
-          <img src={require('../Cards/hillary.PNG')} />        </Card>
+          <img src={require('../Cards/hillary.PNG ')} />        </Card>
       </CardWrapper>
     );
   }
