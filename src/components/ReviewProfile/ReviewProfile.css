@@ -18,19 +18,6 @@
   vertical-align: top;
 }
 
-.button {
-  background-color: black; 
-  border: none;
-  color: white;
-  padding: 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 15px;
-  margin: 8px 10px;
-  cursor: pointer;
-  border-radius: 75%;
-}
 
 .photo {
   width: 150px;

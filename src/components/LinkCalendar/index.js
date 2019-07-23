@@ -11,7 +11,7 @@ class LinkCalendar extends Component {
 					<img src={logo} className="logo" alt="logo" />
 					<h1 className ="great-vibes"> Link your Calendar</h1>
 					<button className="button"> Link your Google Calendar </button>
-					<button className="button"> Link your iCal</button><br></br>
+					<button className="button"> Link your iCal</button><br></br>                 
 					Continue
 				</div>
 			</div>			

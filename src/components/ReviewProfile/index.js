@@ -17,7 +17,7 @@ class ReviewProfile extends Component {
 					Gender orientation: <br></br><br></br>
 					I am interested in: <br></br><br></br>
 					Preferred age range: ___________<br></br><br></br><br></br><br></br><br></br>
-					          Continue
+					Continue
 				</div>
 			</div>			
 			)
