@@ -14,6 +14,7 @@ const Landing = () => (
     {/* <img src={logo} className="st-deco" alt="logo" /> */}
     <div className="h2-abs1"> Tryst </div>
     <p>Dating without the hassle </p>
+
   </div>
 );
 

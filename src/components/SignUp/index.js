@@ -234,13 +234,13 @@ class SignUpFormBase extends Component {
               type="text"
               placeholder="do you prefer men, women, or both?"
             />
-            <input className="input"
+            {/* <input className="input"
               name="location"
               value={location}
               onChange={this.onChange}
               type="text"
               placeholder="how far are you willing to search (in kms)?"
-            />
+            /> */}
             <input className="input"
               name="agepref"
               value={agepref}
@@ -266,10 +266,27 @@ class SignUpFormBase extends Component {
                         display: "inline-block",
                         fontSize: "16px",
                         marginTop: "4px", 
-                        marginRight: "2px",
+                        // marginRight: "2px",
                         cursor: "pointer"}}>
                   Upload photos for your profile! 
               </CustomUploadButton>
+              <button 
+                      style={{backgroundColor: "#ad244f", 
+                      width: "100%",
+                      border: "none",
+                      color: "white",
+                      padding: "20px",
+                      textAlign: "center",
+                      display: "inline-block",
+                      fontSize: "16px",
+                      marginTop: "4px", 
+                      marginLeft:"2px",
+                      marginRight: "2px",
+                      cursor: "pointer"}}>
+                        Link your calendar
+                      </button>
+
+              {/* <h1>Link your calendar </h1> */}
               {/* <p>Progress: {this.state.uploadProgress}</p>
               <p>Filenames: {this.state.filenames.join(", ")}</p> */}
               {/* <div>

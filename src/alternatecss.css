@@ -71,14 +71,14 @@ p {
 	font-family: 'Trocchi', serif;
 	color: #e23a6e;
 	text-shadow: 1px 1px 1px rgba(151,24,64,0.2);
-	position: absolute;
+	position: fixed;
 	font-size: 250%;
 	/* font-weight: 900; */
 	width: 80%;
 	left: 10%;
 	text-align: center;
 	line-height: 50px;
-	margin: -450px 0 0 0;
+	margin: -250px 0 0 0;
 	padding: 0;
 	top: 50%;
 	-webkit-backface-visibility: hidden;
