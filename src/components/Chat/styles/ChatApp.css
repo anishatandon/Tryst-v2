@@ -1,0 +1,109 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  background: #eee;
+}
+
+.messages {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  flex-grow: 1;
+  padding: 20px;
+
+}
+
+h3 {
+  text-align: center;
+  padding: 20px 0;
+  margin: 0;
+  border-bottom: 1px solid #ddd;
+  background-color: #fa96b5;
+}
+
+.chat-input {
+  position: relative;
+  overflow: hidden;
+  padding: 0 30px;
+  flex-shrink: 0;
+}
+
+.chat-input input[type="text"] {
+  width: 100%;
+  margin-left: -20px;
+  margin-right: -20px;
+}
+
+.message.from-me .username {
+  display: none;
+}
+
+.message.from-me {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 5px;
+  margin-top: 5px; 
+
+}
+
+.message.from-me .message-body {
+  background-color: #5e0000;
+  color: white;
+}
+
+.message {
+  margin-bottom: 20px;
+}
+.message-body {
+  max-width: 80%;
+  display: inline-block;
+  padding: 20px;
+  background-color: #eee;
+  border: 1px;
+  border-radius: 5px;
+  padding-right: 50px;
+
+}
+
+.st-deco{
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 0px;
+  left: 60%;
+  margin-left: -100px;
+  background: #5e0000;
+  -webkit-transform: translateY(-50%) rotate(45deg);
+  -moz-transform: translateY(-50%) rotate(45deg);
+  -o-transform: translateY(-50%) rotate(45deg);
+  -ms-transform: translateY(-50%) rotate(45deg);
+  transform: translateY(-50%) rotate(45deg); 
+}
+
+[data-icon]:after {
+  content: attr(data-icon);
+  font-family: 'FontAwesome';
+  color: #fff;
+  text-shadow: 1px 1px 1px rgba(151,24,64,0.2);
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  line-height: 200px;
+  text-align: center;
+  font-size: 90px;
+  top: 50%;
+  left: 50%;
+  margin: -100px 0 0 -100px;
+  -webkit-transform: rotate(-45deg) translateY(25%);
+  -moz-transform: rotate(-45deg) translateY(25%);
+  -o-transform: rotate(-45deg) translateY(25%);
+  -ms-transform: rotate(-45deg) translateY(25%);
+  transform: rotate(-45deg) translateY(25%);
+}
+
+
+.username {
+  font-weight: bold;
+  font-size: 0.9rem;
+  color: #999;
+  margin-bottom: 5px;
+}
